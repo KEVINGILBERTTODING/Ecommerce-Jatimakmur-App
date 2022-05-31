@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kencana.kampunganggrek.MainActivity">
+    <item android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:title="Cari Barang"
+        app:showAsAction="collapseActionView|always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+    <item android:id="@+id/action_history"
+        android:title="Daftar Pembelian"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_profile"
+        android:title="Update Profil"
+        android:orderInCategory="200"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_call_center"
+        android:title="Call Center"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_sms_center"
+        android:title="SMS Center"
+        android:orderInCategory="400"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_maps"
+        android:title="Lokasi"
+        android:orderInCategory="500"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_logout"
+        android:title="Log out"
+        android:orderInCategory="600"
+        app:showAsAction="never" />
+</menu>

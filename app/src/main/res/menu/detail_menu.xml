@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item android:id="@+id/action_call_center"
+        android:title="Call Center"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_sms_center"
+        android:title="SMS Center"
+        android:orderInCategory="200"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_maps"
+        android:title="Lokasi"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_profile"
+        android:title="Update Profil"
+        android:orderInCategory="400"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_logout"
+        android:title="Log out"
+        android:orderInCategory="500"
+        app:showAsAction="never" />
+</menu>

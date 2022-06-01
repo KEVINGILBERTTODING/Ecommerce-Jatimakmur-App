@@ -1,44 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/wave"
+    android:orientation="vertical"
     tools:context=".Splashscreeen">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="300dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo_kampunganggrek"
-        android:layout_centerInParent="true"/>
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/_180sdp">
 
-    <TextView
-        android:fontFamily="cursive"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Selamat Datang"
-        android:textColor="#fff"
-        android:textSize="50sp"
-        android:textStyle="bold"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:textAlignment="center"
+            android:src="@drawable/iconandtext"
+            android:layout_gravity="center"
+            />
 
-    <TextView
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginBottom="35dp"
-        android:text="v1.0"
-        android:textColor="#fff"/>
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/laodingBar"
+            style="@style/AVLoadingIndicatorView.Small"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_170sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:visibility="visible"
+            app:indicatorColor="@color/white"
+            app:indicatorName="BallPulseIndicator" />
 
-    <ProgressBar
-        android:id="@+id/progresBar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UMKM Jatimakmur"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/_8sdp"
+            android:fontFamily="@font/popmed"
 
-</RelativeLayout>
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Version 1.1.2"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/popmed"
+            android:textSize="@dimen/_7sdp"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

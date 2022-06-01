@@ -1,4 +1,4 @@
-package com.kencana.kampunganggrek.Util;
+package com.kevin.jatimakmur.Util;
 
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -16,7 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.FileProvider;
 
-import com.kencana.kampunganggrek.R;
+import com.kevin.jatimakmur.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -77,7 +77,7 @@ public class DownloadTask {
 
                     alertDialogBuilder.setNegativeButton("Lihat Nota",new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            File pdfFile = new File(Environment.getExternalStorageDirectory() + "/Kampung anggrek/" + downloadFileName);  // -> filename = maven.pdf
+                            File pdfFile = new File(context.getExternalFilesDir(null) + "/Kampung anggrek/" + downloadFileName);  // -> filename = maven.pdf
                             Uri path = Uri.fromFile(pdfFile);
                             Uri uri = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", pdfFile);
                             Log.d(TAG, "uri : "+uri);
@@ -133,6 +133,7 @@ public class DownloadTask {
                 c.setRequestMethod("GET");//Set Request Method to "GET" since we are grtting data
                 c.connect();//connect the URL Connection
 
+                Log.d("url", String.valueOf(url));
                 //If Connection response is not OK then show Logs
                 if (c.getResponseCode() != HttpURLConnection.HTTP_OK) {
                     Log.e(TAG, "Server returned HTTP " + c.getResponseCode()
@@ -144,7 +145,7 @@ public class DownloadTask {
                 //Get File if SD card is present
                 if (new CheckForSDCard().isSDCardPresent()) {
 
-                    apkStorage = new File(Environment.getExternalStorageDirectory() + "/" + "Kampung anggrek");
+                    apkStorage = new File(context.getExternalFilesDir(null) + "/" + "Kampung anggrek");
                 } else
                     Toast.makeText(context, "Oops!! There is no SD Card.", Toast.LENGTH_SHORT).show();
 

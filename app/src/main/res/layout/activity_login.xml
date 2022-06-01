@@ -27,8 +27,8 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="@dimen/_200sdp"
-                    android:layout_height="@dimen/_200sdp"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
@@ -41,9 +41,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/popsem"
-                android:text="Halo, Selamat datang"
+                android:text="Selamat datang Kembali"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_14sdp" />
 
 
             <TextView
@@ -74,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/popmed"
-                    android:hint="Username"
+                    android:hint="Nama Pengguna"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_9sdp"></com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/popmed"
-                    android:hint="Password"
+                    android:hint="Kata Sandi"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_9sdp"></com.google.android.material.textfield.TextInputEditText>
@@ -132,16 +132,16 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_signinFb"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="end"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:backgroundTint="@color/com_facebook_blue"
                 android:fontFamily="@font/popmed"
-                android:text="Sign in with Facebook"
+                android:text="Masuk dengan Facebook"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_9sdp"
-                app:cornerRadius="@dimen/_20sdp"
+                app:cornerRadius="@dimen/_10sdp"
                 app:elevation="@dimen/_10sdp"
                 app:icon="@drawable/ic_facebook_24dp"
                 app:iconGravity="start"
@@ -151,16 +151,16 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnGoogleSignIn"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="end"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/popmed"
-                android:text="Sign in with Google"
+                android:text="Masuk dengan Google"
                 android:textAllCaps="false"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9sdp"
-                app:cornerRadius="@dimen/_20sdp"
+                app:cornerRadius="@dimen/_10sdp"
                 app:elevation="@dimen/_10sdp"
                 app:icon="@drawable/ic_google__24"
                 app:iconGravity="start"

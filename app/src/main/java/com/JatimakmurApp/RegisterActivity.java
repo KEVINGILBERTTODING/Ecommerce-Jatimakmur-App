@@ -47,7 +47,6 @@ public class RegisterActivity extends AppCompatActivity {
     public static final String my_shared_preferences = "my_shared_preferences";
     String tag_json_obj = "json_obj_req";
 
-    TextInputLayout til_email, til_user, til_pass, til_confpass;
     TextInputEditText ti_email, ti_user, ti_pass, ti_confpass;
     TextView signin;
     Button signup;
@@ -72,15 +71,11 @@ public class RegisterActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(my_shared_preferences,Context.MODE_PRIVATE);
 
         ti_email = findViewById(R.id.ti_email_signup);
-        ti_user = findViewById(R.id.ti_user_signup);
-        ti_pass  = findViewById(R.id.ti_pass_signup);
-        ti_confpass  = findViewById(R.id.ti_confpass_signup);
-        til_email = findViewById(R.id.til_email_signup);
-        til_user = findViewById(R.id.til_user_signup);
-        til_pass = findViewById(R.id.til_pass_signup);
-        til_confpass = findViewById(R.id.til_confpass_signup);
-        signin = findViewById(R.id.button_signinSignup);
-        signup = findViewById(R.id.button_signupSignup);
+        ti_user = findViewById(R.id.edt_username);
+        ti_pass  = findViewById(R.id.edt_pass);
+        ti_confpass  = findViewById(R.id.edt_pass_conf);
+        signin = findViewById(R.id.tv_ToLogin);
+        signup = findViewById(R.id.button_register);
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,33 +93,21 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = ti_pass.getText().toString();
                 String confir_password = ti_confpass.getText().toString();
 
-                //reset indikator error
-                til_email.setErrorEnabled(false);
-                til_email.setError(null);
-                til_user.setErrorEnabled(false);
-                til_user.setError(null);
-                til_pass.setErrorEnabled(false);
-                til_pass.setError(null);
-                til_confpass.setErrorEnabled(false);
-                til_confpass.setError(null);
+
 
                 //validasi form
                 if( !isValidEmail(email) || username.isEmpty() || password.length() < 8 || !confir_password.equals(password)){
                     if(!isValidEmail(email)){
-                        til_email.setErrorEnabled(true);
-                        til_email.setError("Email tidak valid");
+                        ti_email.setError("Email tidak valid");
                     }
                     if(username.isEmpty()){
-                        til_user.setErrorEnabled(true);
-                        til_user.setError("Masukan Nama Pengguna");
+                        ti_user.setError("Masukan Nama Pengguna");
                     }
                     if(password.length() < 8) {
-                        til_pass.setErrorEnabled(true);
-                        til_pass.setError("Password berisi minimal 8 karakter");
+                        ti_pass.setError("Password berisi minimal 8 karakter");
                     }
                     if(!confir_password.equals(password)) {
-                        til_confpass.setErrorEnabled(true);
-                        til_confpass.setError("Password tidak sama");
+                        ti_confpass.setError("Password tidak sama");
                     }
                 }else{
                     try {

@@ -1,37 +1,51 @@
-<resources>
-
-    <!-- Style aplikasi -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.jatimakmur" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/pink</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/main</item>
+        <item name="colorSecondaryVariant">@color/main</item>
+        <item name="colorOnSecondary">@color/main</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
     </style>
 
-    <!--  Style untuk activity tanpa action bar  -->
-    <style name="NoActionBar" parent="Theme.MaterialComponents.Light.DarkActionBar">
+
+
+    <!--    Style untuk halaman Splash Screen-->
+    <style name="Theme.SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/pink</item>
-        <item name="android:textColorSecondary">#fff</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/main</item>
+        <item name="colorSecondaryVariant">@color/main</item>
+        <item name="colorOnSecondary">@color/main</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
     </style>
 
-    <!--  Style toolbar terbuka  -->
-    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textColor">#fff</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">30dp</item>
-        <item name="android:fontFamily">cursive</item>
-    </style>
+<style name="AlertDialogCustom" parent="@android:style/Theme.Dialog"/>
 
-    <!--  Style untuk toolbar tertutup  -->
-    <style name="Toolbar.TitleText2" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textColor">#fff</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">23dp</item>
-        <item name="android:fontFamily">cursive</item>
-    </style>
-
-    <style name="AlertDialogCustom" parent="@android:style/Theme.Dialog">
+    <!--    Style untuk halaman Login Screen-->
+    <style name="Theme.LoginScreen" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/main</item>
+        <item name="colorSecondaryVariant">@color/main</item>
+        <item name="colorOnSecondary">@color/main</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
     </style>
 
 </resources>

@@ -26,7 +26,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:requestLegacyExternalStorage="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Theme.jatimakmur"
         android:usesCleartextTraffic="true">
         <activity android:name="com.JatimakmurApp.HistoryActivity"></activity>
         <activity android:name="com.JatimakmurApp.StatusActivity" />
@@ -35,11 +35,11 @@
         <activity android:name="com.JatimakmurApp.UpdateUserActivity" />
         <activity
             android:name="com.JatimakmurApp.RegisterActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/Theme.LoginScreen" />
         <activity
             android:name="com.JatimakmurApp.Splashscreeen"
             android:exported="true"
-            android:theme="@style/NoActionBar">
+            android:theme="@style/Theme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,10 +48,10 @@
         </activity>
         <activity
             android:name="com.JatimakmurApp.LoginActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/Theme.LoginScreen"/>
         <activity
             android:name="com.JatimakmurApp.MainActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/Theme.jatimakmur" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

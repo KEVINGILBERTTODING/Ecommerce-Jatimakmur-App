@@ -107,9 +107,7 @@ public class LoginActivity extends AppCompatActivity {
         til_user = findViewById(R.id.til_user_signin);
         til_pass = findViewById(R.id.til_pass_signin);
         signin = findViewById(R.id.button_signinSignin);
-        googleSignin = findViewById(R.id.button_signinGoogle);
-        fbSignin = findViewById(R.id.button_signinFacebook);
-        signup = findViewById(R.id.button_signupSignin);
+        signup = findViewById(R.id.button_signupSignup);
 
         // Cek session login jika TRUE maka langsung buka MainActivity
         sharedpreferences = getSharedPreferences(my_shared_preferences,Context.MODE_PRIVATE);
@@ -164,62 +162,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        googleSignin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, 1);
-            }
-        });
-
-        //facebook login
-        callbackManager = CallbackManager.Factory.create();
-        fbSignin.setReadPermissions(Arrays.asList("email","public_profile"));
-        AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
-            @Override
-            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-
-            }
-        };
-        ProfileTracker profileTracker = new ProfileTracker() {
-            @Override
-            protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
-
-            }
-        };
-        fbSignin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                AccessToken accessToken = loginResult.getAccessToken();
-                Profile profile = Profile.getCurrentProfile();
-                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
-                        new GraphRequest.GraphJSONObjectCallback() {
-                            @Override
-                            public void onCompleted(JSONObject object, GraphResponse response) {
-                                Log.e("aa", ""+response.toString());
-                                try {
-                                    Toast.makeText(getApplicationContext(), "Hi, " + object.getString("name"), Toast.LENGTH_LONG).show();
-                                } catch(JSONException ex) {
-                                    ex.printStackTrace();
-                                }
-                            }
-                        });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,name");
-                request.setParameters(parameters);
-                request.executeAsync();
-            }
-
-            @Override
-            public void onCancel() {
-                Toast.makeText(getApplication(), "R.string.cancel_login", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Toast.makeText(getApplication(), "R.string.error_login", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -35,6 +35,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.button.MaterialButton;
 
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         mRecyclerview.setHasFixedSize(true);
         cartRecycler = (RecyclerView) findViewById(R.id.rc_cart2);
         cartRecycler.setHasFixedSize(true);
+
 
         //mengambil data dari API
         loadJson();
@@ -269,6 +272,12 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                 editor.putBoolean(LoginActivity.session_status, false);
                 editor.putString(TAG_USERNAME, null);
                 editor.commit();
+
+                // logout for facebook
+
+                LoginManager.getInstance().logOut();
+
+
                 finish();
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
                 return true;
@@ -369,5 +378,13 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                 });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    public void checkout(View view) {
+        if(cart.isEmpty()){
+            Toast.makeText(MainActivity.this,"Pilih barang terlebih dahulu", Toast.LENGTH_LONG).show();
+        }else{
+            startActivity(new Intent(MainActivity.this, OngkirActivity.class));
+        }
     }
 }

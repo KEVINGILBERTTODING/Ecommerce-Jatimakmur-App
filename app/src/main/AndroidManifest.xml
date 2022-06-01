@@ -28,6 +28,11 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/Theme.jatimakmur"
         android:usesCleartextTraffic="true">
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+
+
         <activity android:name="com.JatimakmurApp.HistoryActivity"></activity>
         <activity android:name="com.JatimakmurApp.StatusActivity" />
         <activity android:name="com.JatimakmurApp.OngkirApi.OngkirActivity" />

@@ -1,5 +1,6 @@
 package com.JatimakmurApp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -26,10 +27,12 @@ import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -52,9 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextInputLayout til_user, til_pass;
     TextInputEditText ti_user, ti_pass;
-    Button signin;
-    ImageButton googleSignin;
-    LoginButton fbSignin;
+    Button signin, signinFb, signinGoogle;
     TextView signup;
 
     ProgressDialog pDialog;
@@ -81,6 +82,10 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+
 
         // Fungsi untuk menyembunyikan navbar
 
@@ -115,6 +120,8 @@ public class LoginActivity extends AppCompatActivity {
         til_pass = findViewById(R.id.til_pass_signin);
         signin = findViewById(R.id.button_signinSignin);
         signup = findViewById(R.id.button_signupSignup);
+        signinFb = findViewById(R.id.button_signinFb);
+        signinGoogle = findViewById(R.id.button_GoogleSignIn);
 
         // Cek session login jika TRUE maka langsung buka MainActivity
         sharedpreferences = getSharedPreferences(my_shared_preferences,Context.MODE_PRIVATE);
@@ -176,6 +183,50 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+
+        // Login with Facebook button click event
+
+        callbackManager = CallbackManager.Factory.create();
+
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+
+        if (accessToken != null && !accessToken.isExpired()) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+
+
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
+
+        // Login with Facebook button click event
+
+        signinFb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("public_profile"));
+
             }
         });
 
@@ -259,5 +310,13 @@ public class LoginActivity extends AppCompatActivity {
             imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
         return super.dispatchTouchEvent(ev);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

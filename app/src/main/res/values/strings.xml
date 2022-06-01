@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Kampung Anggrek</string>
-    <string name="facebook_app_id">257306185612819</string>
-    <string name="fb_login_protocol_scheme">fb257306185612819</string>
-
+    <string name="facebook_app_id">1311993779627742</string>
+    <string name="fb_login_protocol_scheme">fb1311993779627742</string>
+    <string name="facebook_client_token">d2be43c02b1fc54d28c06ae7c45275be</string>
     <string-array name="daftar_kurir">
         <item>JNE</item>
         <item>POS</item>

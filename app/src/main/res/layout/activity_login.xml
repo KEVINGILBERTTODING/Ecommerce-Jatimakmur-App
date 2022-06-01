@@ -149,7 +149,7 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnGoogleSignIn"
+                android:id="@+id/button_GoogleSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="end"

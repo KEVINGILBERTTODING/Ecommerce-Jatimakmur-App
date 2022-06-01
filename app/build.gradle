@@ -4,7 +4,7 @@ android {
     compileSdkVersion 31
 
     defaultConfig {
-        applicationId "com.kencana.kampunganggrek"
+        applicationId "com.kevin.jatimakmur"
         minSdkVersion 23
         targetSdkVersion 31
         versionCode 1

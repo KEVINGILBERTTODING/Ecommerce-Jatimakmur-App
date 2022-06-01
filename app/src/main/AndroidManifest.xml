@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kevin.jatimakmur">
+    package="com.JatimakmurApp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name="com.kevin.jatimakmur.Util.AppController"
+        android:name="com.JatimakmurApp.Util.AppController"
         android:allowBackup="true"
         android:icon="@drawable/logo_kampunganggrek"
         android:label="@string/app_name"
@@ -28,16 +28,16 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.kevin.jatimakmur.HistoryActivity"></activity>
-        <activity android:name="com.kevin.jatimakmur.StatusActivity" />
-        <activity android:name="com.kevin.jatimakmur.OngkirApi.OngkirActivity" />
-        <activity android:name="com.kevin.jatimakmur.DetailProdukActivity" />
-        <activity android:name="com.kevin.jatimakmur.UpdateUserActivity" />
+        <activity android:name="com.JatimakmurApp.HistoryActivity"></activity>
+        <activity android:name="com.JatimakmurApp.StatusActivity" />
+        <activity android:name="com.JatimakmurApp.OngkirApi.OngkirActivity" />
+        <activity android:name="com.JatimakmurApp.DetailProdukActivity" />
+        <activity android:name="com.JatimakmurApp.UpdateUserActivity" />
         <activity
-            android:name="com.kevin.jatimakmur.RegisterActivity"
+            android:name="com.JatimakmurApp.RegisterActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="com.kevin.jatimakmur.Splashscreeen"
+            android:name="com.JatimakmurApp.Splashscreeen"
             android:exported="true"
             android:theme="@style/NoActionBar">
             <intent-filter>
@@ -47,10 +47,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.kevin.jatimakmur.LoginActivity"
+            android:name="com.JatimakmurApp.LoginActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="com.kevin.jatimakmur.MainActivity"
+            android:name="com.JatimakmurApp.MainActivity"
             android:theme="@style/NoActionBar" />
 
         <meta-data

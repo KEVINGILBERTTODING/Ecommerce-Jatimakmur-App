@@ -5,38 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/appbarLayout"
-        android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/colorPrimary"
-            app:title="@string/app_name"
-            app:expandedTitleMarginBottom="20dp"
-            app:expandedTitleMarginStart="20dp"
-            app:collapsedTitleTextAppearance="@style/Toolbar.TitleText2"
-            app:expandedTitleTextAppearance="@style/Toolbar.TitleText"
-            >
-            <ViewFlipper
-                android:id="@+id/v_flipper"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_centerHorizontal="true"
-                android:foreground="@drawable/fg_gradient"/>
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-                android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"

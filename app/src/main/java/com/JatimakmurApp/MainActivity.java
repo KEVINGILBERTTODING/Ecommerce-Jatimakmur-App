@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,10 +36,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.bumptech.glide.Glide;
 import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.button.MaterialButton;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     public static CartAdapter cartAdapter;
     RecyclerView mRecyclerview;
     RecyclerView cartRecycler;
+    TextView tv_Username;
+    ImageView imgProfile;
 
     LinearLayout bottomSheetLayout;
     RelativeLayout colapseBottomSheet;
@@ -71,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     public static ArrayList<Produk> cart = new ArrayList<>();
 
     public static TextView txtTot;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +102,60 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         mRecyclerview.setHasFixedSize(true);
         cartRecycler = (RecyclerView) findViewById(R.id.rc_cart2);
         cartRecycler.setHasFixedSize(true);
+
+        tv_Username     =   findViewById(R.id.tv_UserName);
+        imgProfile  =   findViewById(R.id.profile_image);
+
+
+
+
+//        if (userName != null) {
+//            Glide.with(this).load(userImageUrl).into(imgProfile);
+//            tv_Username.setText("Hai" + userName);
+//
+//        }
+
+        if(AccessToken.getCurrentAccessToken()!=null){
+
+
+            AccessToken accessToken  = AccessToken.getCurrentAccessToken();
+
+
+            GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+
+                @Override
+                public void onCompleted( JSONObject jsonObject, GraphResponse graphResponse) {
+                    try {
+
+
+                        // get nama dan image profile facebook account
+
+                        String fullName = jsonObject.getString("name" );
+                        String url = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
+
+                        tv_Username.setText(fullName);
+                        Picasso.get().load(url).into(imgProfile);
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            Bundle parameters=new Bundle();
+            parameters.putString("fields","id,name,link,picture.type(large)");
+            request.setParameters(parameters);
+            request.executeAsync();
+
+
+
+        }
+        if(username!=null){
+            tv_Username.setText("Hai, " + username);
+            imgProfile.setVisibility(View.GONE);
+        }
+
 
 
         //mengambil data dari API
@@ -287,10 +349,12 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     }
 
     //tombol search di action bar
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+        getSupportActionBar().setElevation(0);
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
 

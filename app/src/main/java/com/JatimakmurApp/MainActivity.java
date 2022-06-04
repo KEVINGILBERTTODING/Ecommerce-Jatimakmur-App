@@ -29,6 +29,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.JatimakmurApp.OngkirApi.OngkirActivity;
 import com.JatimakmurApp.Util.ServerAPI;
@@ -59,8 +60,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     SharedPreferences sharedpreferences;
 
     androidx.appcompat.widget.Toolbar toolbar;
-    ViewFlipper v_flipper;
-    int images[] = {R.drawable.banner, R.drawable.banner1, R.drawable.banner2, R.drawable.banner3};
     ProgressDialog pd;
     public static ArrayList<Produk> mItems = new ArrayList<>();
     private ProdukAdapter produkadapter;
@@ -69,15 +68,22 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     RecyclerView cartRecycler;
     TextView tv_Username;
     ImageView imgProfile;
+    SearchView searchView;
 
     LinearLayout bottomSheetLayout;
     RelativeLayout colapseBottomSheet;
     BottomSheetBehavior bottomSheetBehavior;
+    SwipeRefreshLayout  refreshProduct;
 
     MaterialButton btn_checkout, btn_clearcart;
     public static ArrayList<Produk> cart = new ArrayList<>();
 
     public static TextView txtTot;
+
+    ViewFlipper v_flipper;
+    int images[] = {R.drawable.slider1,
+            R.drawable.slider2,R.drawable.slider3
+            ,R.drawable.slider4,R.drawable.slider5};
 
 
     @Override
@@ -93,10 +99,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
         pd = new ProgressDialog(MainActivity.this);
 
-        //membuat slideshow dengan viewfliper
 
-//        for (int i =0; i<images.length; i++) fliverImages(images[i]);
-//        for (int image: images) fliverImages(image);
 
         mRecyclerview = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerview.setHasFixedSize(true);
@@ -105,7 +108,28 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
         tv_Username     =   findViewById(R.id.tv_UserName);
         imgProfile  =   findViewById(R.id.profile_image);
+        searchView  =   findViewById(R.id.search_barr);
+        refreshProduct  =   findViewById(R.id.refreshProduct);
 
+        refreshProduct.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshProduct.setRefreshing(false);
+                loadJson();
+            }
+        });
+
+
+
+
+        // Fungsi Flipper
+
+        v_flipper = findViewById(R.id.v_flipper);
+        for (int i =0; i<images.length; i++){
+            fliverImages(images[i]);
+        }
+        for (int image: images)
+            fliverImages(image);
 
 
 
@@ -197,22 +221,36 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
             }
         });
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                produkadapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                produkadapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
         //inisialisasi bottomsheet
         initBottomsheet();
     }
 
-//    //fungsi utnuk slide show
-//    public  void  fliverImages(int images){
-//        ImageView imageView = new ImageView(this);
-//        imageView.setBackgroundResource(images);
-//        v_flipper.addView(imageView);
-//        v_flipper.setFlipInterval(5000);
-//        v_flipper.setAutoStart(true);
-//        v_flipper.setInAnimation(this,android.R.anim.slide_in_left);
-//        v_flipper.setOutAnimation(this,android.R.anim.slide_out_right);
-//    }
 
-
+    // Method untuk set image dan efek fliver
+    public void fliverImages(int images){
+        ImageView imageView = new ImageView(this);
+        imageView.setBackgroundResource(images);
+        v_flipper.addView(imageView);
+        v_flipper.setFlipInterval(4000);
+        v_flipper.setAutoStart(true);
+        v_flipper.setInAnimation(this,android.R.anim.slide_in_left);
+        v_flipper.setInAnimation(this,android.R.anim.slide_in_left);
+        v_flipper.setOutAnimation(this,android.R.anim.slide_out_right);
+    }
 
     //fungsi ambil data dari API
     private void loadJson(){
@@ -246,6 +284,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                             }
                         }
                         produkadapter.notifyDataSetChanged();
+                        refreshProduct.setRefreshing(false);
                     }
                 },
                 new Response.ErrorListener() {
@@ -253,6 +292,8 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                     public void onErrorResponse(VolleyError error) {
                         pd.cancel();
                         Log.d("volley", "error : " + error.getMessage());
+                        refreshProduct.setRefreshing(false);
+
                     }
                 });
 
@@ -352,29 +393,14 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         getSupportActionBar().setElevation(0);
-
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-
-        androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                produkadapter.getFilter().filter(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                produkadapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-
         return true;
     }
+
+
+
 
     //method inisialisasi botttomsheet
     private void initBottomsheet() {

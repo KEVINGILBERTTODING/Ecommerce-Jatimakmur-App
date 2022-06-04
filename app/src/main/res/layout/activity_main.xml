@@ -7,7 +7,11 @@
     android:background="#F7F7F7"
     tools:context=".MainActivity">
 
-
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
     <LinearLayout
         android:id="@+id/banner1"
@@ -82,19 +86,81 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="@dimen/_200sdp"
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="50dp"
-        android:layout_marginLeft="@dimen/_3sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        tools:listitem="@layout/item_list"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            >
 
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Promo terbaik"
+                        android:id="@+id/tv1"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:fontFamily="@font/popsem"
+
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/crdBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:layout_marginRight="@dimen/_16sdp"
+                        >
+
+                        <ViewFlipper
+                            android:id="@+id/v_flipper"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_centerHorizontal="true">
+                        </ViewFlipper>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="50dp"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        tools:listitem="@layout/item_list"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <View
         android:id="@+id/shadow"
         android:layout_width="match_parent"
@@ -114,9 +180,9 @@
         <RelativeLayout
             android:id="@+id/bs_colapse"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/_30sdp"
             android:onClick="checkout"
-            android:background="#fff">
+            android:background="@color/main">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,7 +190,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
-                android:textSize="20sp"/>
+                android:fontFamily="@font/popsem"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"/>
+
             <TextView
                 android:id="@+id/totalHarga"
                 android:layout_width="wrap_content"
@@ -132,9 +201,13 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:textSize="20sp"
-                android:text="Rp. 0"/>
+                android:text="Rp. 0"
+                android:textColor="@color/white"
+                android:fontFamily="@font/popsem"
+                android:textSize="@dimen/_11sdp" />
         </RelativeLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -175,4 +248,5 @@
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

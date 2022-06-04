@@ -61,7 +61,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@id/img_card"
                 android:textColor="@color/black"
-                android:text="Anggrek Bulan"
+                android:text="Ayam Kampung Segar"
                 android:fontFamily="@font/popsem"
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_marginRight="@dimen/_5sdp"

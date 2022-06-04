@@ -3,11 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.JatimakmurApp.MainActivity">
-    <item android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_white_24dp"
-        android:title="Cari Barang"
-        app:showAsAction="collapseActionView|always"
-        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
     <item android:id="@+id/action_history"
         android:title="Daftar Pembelian"
         android:orderInCategory="100"

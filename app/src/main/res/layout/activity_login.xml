@@ -132,7 +132,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_signinFb"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:backgroundTint="@color/com_facebook_blue"
@@ -145,13 +145,14 @@
                 app:elevation="@dimen/_10sdp"
                 app:icon="@drawable/ic_facebook_24dp"
                 app:iconGravity="start"
+                app:iconSize="@dimen/_13sdp"
                 app:iconTint="@color/white" />
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_GoogleSignIn"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
@@ -162,6 +163,7 @@
                 android:textSize="@dimen/_9sdp"
                 app:cornerRadius="@dimen/_10sdp"
                 app:elevation="@dimen/_10sdp"
+                app:iconSize="@dimen/_15sdp"
                 app:icon="@drawable/ic_google__24"
                 app:iconGravity="start"
                 app:iconTint="@null" />

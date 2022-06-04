@@ -4,13 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7F7F7"
     tools:context=".MainActivity">
 
+
+
+    <LinearLayout
+        android:id="@+id/banner1"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/coantainer_header"
+        android:layout_height="@dimen/_100sdp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/_16sdp"
+        >
+        <TextView
+            android:id="@+id/tv_UserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/popmed"
+            android:text="Halo, Kevin Toding!"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+
+        <ImageView
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:src="@drawable/handbye"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/popsem"
+        android:text="Belanja kebutuhan apa hari ini?"
+        android:textColor="@color/white"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:textSize="@dimen/_11sdp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:src="@color/colorAccent"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_minus37sdp"
+            app:civ_border_width="3dp"
+            android:layout_marginRight="@dimen/_16sdp"
+            app:civ_border_color="#FFFF"/>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_barr"
+            android:layout_width="match_parent"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/tvTitle2"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:focusable="false"
+            app:searchIcon="@drawable/ic_search"
+            android:background="@drawable/content3"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@drawable/content3"
+            app:queryHint="Cari barang..."
+            app:theme="@style/AppSearchView"
+            />
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="@dimen/_200sdp"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="50dp"
+        android:layout_marginLeft="@dimen/_3sdp"
+        android:layout_marginRight="@dimen/_10sdp"
         tools:listitem="@layout/item_list"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"

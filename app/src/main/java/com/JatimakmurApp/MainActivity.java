@@ -44,6 +44,7 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -56,7 +57,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements ProdukAdapter.ItemClickListener {
 
     Toast toast;
-    public static String username;
+    public static String username, userName, userImageUrl;
     SharedPreferences sharedpreferences;
 
     androidx.appcompat.widget.Toolbar toolbar;
@@ -94,6 +95,12 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
         username = getIntent().getStringExtra(TAG_USERNAME);
         toast = Toast.makeText(getApplicationContext(), null,Toast.LENGTH_SHORT);
+
+
+        SharedPreferences preferences = this.getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        userName = preferences.getString("username","");
+        userImageUrl = preferences.getString("userPhoto","");
+
 
         pd = new ProgressDialog(MainActivity.this);
 
@@ -343,6 +350,10 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
                 LoginManager.getInstance().logOut();
 
+                // Logout for google
+
+                FirebaseAuth.getInstance().signOut();
+
 
                 finish();
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
@@ -383,6 +394,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event){
+
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             //menutup bottom sheet ketika tekan di luar bottomsheet
             if (bottomSheetBehavior.getState()==BottomSheetBehavior.STATE_EXPANDED) {
@@ -453,11 +465,11 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     private void checkLogin() {
         // Jika login menggunakan Google
 
-//        if (userName != null) {
-//            Glide.with(this).load(userImageUrl).into(imgProfile);
-//            tv_Username.setText("Hai" + userName);
-//
-//        }
+        if (userName != null) {
+            Glide.with(this).load(userImageUrl).into(imgProfile);
+            tv_Username.setText("Hai" + userName);
+
+        }
 
         // Jika login menggunakan facebook account
 

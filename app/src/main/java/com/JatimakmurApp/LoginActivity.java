@@ -1,5 +1,6 @@
 package com.JatimakmurApp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,12 +37,20 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.JatimakmurApp.Util.AppController;
 import com.JatimakmurApp.Util.ServerAPI;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,23 +67,28 @@ public class LoginActivity extends AppCompatActivity {
     Button signin, signinFb, signinGoogle;
     TextView signup;
 
+    public static final String TAG = "GoogleSignIn";
+    public static final int RC_SIGN_IN = 321;
+
+    private GoogleSignInClient mGoogleSignInClient;
+    private FirebaseAuth mAuth;
+
     ProgressDialog pDialog;
 
     int success;
     ConnectivityManager conMgr;
-
-    private static final String TAG = LoginActivity.class.getSimpleName();
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     public final static String TAG_USERNAME = "username";
     String tag_json_obj = "json_obj_req";
+
+    private static final String TAGname = LoginActivity.class.getSimpleName();
 
     SharedPreferences sharedpreferences;
     Boolean session = false;
     String username;
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
-    private GoogleSignInClient mGoogleSignInClient;
     CallbackManager callbackManager;
 
     @Override
@@ -114,19 +128,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
-        ti_user = findViewById(R.id.ti_user_signin);
-        ti_pass  = findViewById(R.id.ti_pass_signin);
-        til_user = findViewById(R.id.til_user_signin);
-        til_pass = findViewById(R.id.til_pass_signin);
-        signin = findViewById(R.id.button_signinSignin);
-        signup = findViewById(R.id.button_signupSignup);
-        signinFb = findViewById(R.id.button_signinFb);
-        signinGoogle = findViewById(R.id.button_GoogleSignIn);
+        initilize();
 
         // Cek session login jika TRUE maka langsung buka MainActivity
         sharedpreferences = getSharedPreferences(my_shared_preferences,Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
         username = sharedpreferences.getString(TAG_USERNAME,null);
+
+
         if (session) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra(TAG_USERNAME, username);
@@ -230,7 +239,28 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Login with Google Account
+        mAuth = FirebaseAuth.getInstance();
+        requestGoogleSignIn();
 
+        signinGoogle.setOnClickListener(view -> {
+            signIn();
+        });
+
+
+    }
+
+
+    private void initilize() {
+
+        ti_user         = findViewById(R.id.ti_user_signin);
+        ti_pass         = findViewById(R.id.ti_pass_signin);
+        til_user        = findViewById(R.id.til_user_signin);
+        til_pass        = findViewById(R.id.til_pass_signin);
+        signin          = findViewById(R.id.button_signinSignin);
+        signup          = findViewById(R.id.button_signupSignup);
+        signinFb        = findViewById(R.id.button_signinFb);
+        signinGoogle    = findViewById(R.id.button_GoogleSignIn);
     }
 
     private void checkLogin(final String username, final String password) {
@@ -292,6 +322,52 @@ public class LoginActivity extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
     }
 
+
+    private void requestGoogleSignIn(){
+        // Configure sign-in to request the user’s basic profile like name and email
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+    }
+
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void firebaseAuthWithGoogle(String idToken) {
+
+        //getting user credentials with the help of AuthCredential method and also passing user Token Id.
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+
+        //trying to sign in user using signInWithCredential and passing above credentials of user.
+
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+
+                            Log.d(TAGname, "signInWithCredential:success");
+
+                            // Sign in success, navigate user to Profile Activity
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+
+                            Toast.makeText(LoginActivity.this, "Selamat datang", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(LoginActivity.this, "User authentication failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+
     private void showDialog() {
         if (!pDialog.isShowing())
             pDialog.show();
@@ -317,6 +393,43 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        // Facebook signin
+
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
+
+        // Google signin
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+
+                //authenticating user with firebase using received token id
+                firebaseAuthWithGoogle(account.getIdToken());
+
+                //assigning user information to variables
+                String userName = account.getDisplayName();
+                String userEmail = account.getEmail();
+                String userPhoto = account.getPhotoUrl().toString();
+                userPhoto = userPhoto+"?type=large";
+
+                //create sharedPreference to store user data when user signs in successfully
+                SharedPreferences.Editor editor = getApplicationContext()
+                        .getSharedPreferences("MyPrefs",MODE_PRIVATE)
+                        .edit();
+                editor.putString("username", userName);
+                editor.putString("useremail", userEmail);
+                editor.putString("userPhoto", userPhoto);
+                editor.apply();
+
+                Log.i(TAGname, "onActivityResult: Success");
+
+            } catch (ApiException e) {
+                Log.e(TAGname, "onActivityResult: " + e.getMessage());
+            }
+        }
     }
 }

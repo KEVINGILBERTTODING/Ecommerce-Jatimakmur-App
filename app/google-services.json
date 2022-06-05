@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "198429897564",
+    "project_id": "umkm-jatimakmur",
+    "storage_bucket": "umkm-jatimakmur.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198429897564:android:8d3c9a09accc844cbb0799",
+        "android_client_info": {
+          "package_name": "com.JatimakmurApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198429897564-mogcqk5g2ser06tg7r12agf0rmelilpk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.JatimakmurApp",
+            "certificate_hash": "abfe774ba4f96c77e732ec11dcbccea049f88eb1"
+          }
+        },
+        {
+          "client_id": "198429897564-d6aerkg9s3ab03uemk70l10pdu5dnf7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVO38T4HCWGTiF4wwzDD9i1IERMjD1BRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198429897564-d6aerkg9s3ab03uemk70l10pdu5dnf7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

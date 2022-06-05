@@ -91,8 +91,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
         username = getIntent().getStringExtra(TAG_USERNAME);
         toast = Toast.makeText(getApplicationContext(), null,Toast.LENGTH_SHORT);
@@ -100,16 +98,20 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         pd = new ProgressDialog(MainActivity.this);
 
 
+        // Inisialisasi method initilize
 
-        mRecyclerview = (RecyclerView) findViewById(R.id.recycler_view);
+        initilize();
+
+        // Inisialisasi method checkLogin
+
+        checkLogin();
+
         mRecyclerview.setHasFixedSize(true);
-        cartRecycler = (RecyclerView) findViewById(R.id.rc_cart2);
+
         cartRecycler.setHasFixedSize(true);
 
-        tv_Username     =   findViewById(R.id.tv_UserName);
-        imgProfile  =   findViewById(R.id.profile_image);
-        searchView  =   findViewById(R.id.search_barr);
-        refreshProduct  =   findViewById(R.id.refreshProduct);
+
+        // Saat dilakukan refresh product
 
         refreshProduct.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -119,73 +121,14 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
             }
         });
 
-
-
-
         // Fungsi Flipper
 
-        v_flipper = findViewById(R.id.v_flipper);
-        for (int i =0; i<images.length; i++){
-            fliverImages(images[i]);
-        }
-        for (int image: images)
-            fliverImages(image);
+        setV_flipper();
 
 
-
-//        if (userName != null) {
-//            Glide.with(this).load(userImageUrl).into(imgProfile);
-//            tv_Username.setText("Hai" + userName);
-//
-//        }
-
-        if(AccessToken.getCurrentAccessToken()!=null){
-
-
-            AccessToken accessToken  = AccessToken.getCurrentAccessToken();
-
-
-            GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
-
-                @Override
-                public void onCompleted( JSONObject jsonObject, GraphResponse graphResponse) {
-                    try {
-
-
-                        // get nama dan image profile facebook account
-
-                        String fullName = jsonObject.getString("name" );
-                        String url = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
-
-                        tv_Username.setText(fullName);
-                        Picasso.get().load(url).into(imgProfile);
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-            Bundle parameters=new Bundle();
-            parameters.putString("fields","id,name,link,picture.type(large)");
-            request.setParameters(parameters);
-            request.executeAsync();
-
-
-
-        }
-        if(username!=null){
-            tv_Username.setText("Hai, " + username);
-            imgProfile.setVisibility(View.GONE);
-        }
-
-
-
-        //mengambil data dari API
-        loadJson();
 
         //set recycler view 2 kolom
+
         GridLayoutManager layoutManager=new GridLayoutManager(this,2);
         mRecyclerview.setLayoutManager(layoutManager);
         produkadapter = new ProdukAdapter(mItems, this); //memanggil adapter
@@ -196,8 +139,10 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         cartAdapter = new CartAdapter(cart);
         cartRecycler.setAdapter(cartAdapter);
 
-        btn_checkout = findViewById(R.id.btn_checkout);
-        btn_clearcart = findViewById(R.id.btn_clearcart);
+        //mengambil data dari API
+
+        loadJson();
+
 
         btn_clearcart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,6 +155,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                 }
             }
         });
+
         btn_checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -236,11 +182,26 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         });
 
         //inisialisasi bottomsheet
+
         initBottomsheet();
+
+    }
+
+    // Method untuk flipper
+
+    public void setV_flipper(){
+
+        for (int i =0; i<images.length; i++){
+            fliverImages(images[i]);
+        }
+        for (int image: images)
+            fliverImages(image);
+
     }
 
 
     // Method untuk set image dan efek fliver
+
     public void fliverImages(int images){
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundResource(images);
@@ -253,6 +214,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     }
 
     //fungsi ambil data dari API
+
     private void loadJson(){
         pd.setMessage("Mengambil Data");
         pd.setCancelable(false);
@@ -301,8 +263,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     }
 
     //menjumlah total harga
-    public void getTotal()
-    {
+    public void getTotal() {
         int tot=0;
         txtTot=(TextView) findViewById(R.id.totalHarga);
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
@@ -314,6 +275,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     }
 
     //fungsi klik pada daftar barang
+
     public void onClick(View view, int position) {
             final Produk produk = mItems.get(position);
             switch (view.getId()) {
@@ -342,7 +304,8 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     }
 
 
-    //fungsi untuk tombol menu
+    // fungsi untuk option menu
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -399,9 +362,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         return true;
     }
 
-
-
-
     //method inisialisasi botttomsheet
     private void initBottomsheet() {
         // get the bottom sheet view
@@ -420,7 +380,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
             }
         });
     }
-
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event){
@@ -475,6 +434,75 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
             Toast.makeText(MainActivity.this,"Pilih barang terlebih dahulu", Toast.LENGTH_LONG).show();
         }else{
             startActivity(new Intent(MainActivity.this, OngkirActivity.class));
+        }
+    }
+
+    private void initilize(){
+        tv_Username     =   findViewById(R.id.tv_UserName);
+        imgProfile      =   findViewById(R.id.profile_image);
+        searchView      =   findViewById(R.id.search_barr);
+        refreshProduct  =   findViewById(R.id.refreshProduct);
+        btn_checkout    =   findViewById(R.id.btn_checkout);
+        btn_clearcart   =   findViewById(R.id.btn_clearcart);
+        cartRecycler    =   (RecyclerView) findViewById(R.id.rc_cart2);
+        mRecyclerview   =   (RecyclerView) findViewById(R.id.recycler_view);
+        v_flipper       =   findViewById(R.id.v_flipper);
+
+    }
+
+    private void checkLogin() {
+        // Jika login menggunakan Google
+
+//        if (userName != null) {
+//            Glide.with(this).load(userImageUrl).into(imgProfile);
+//            tv_Username.setText("Hai" + userName);
+//
+//        }
+
+        // Jika login menggunakan facebook account
+
+        if(AccessToken.getCurrentAccessToken()!=null){
+
+
+            AccessToken accessToken  = AccessToken.getCurrentAccessToken();
+
+
+            GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+
+                @Override
+                public void onCompleted( JSONObject jsonObject, GraphResponse graphResponse) {
+                    try {
+
+
+                        // get nama dan image profile facebook account
+
+                        String fullName = jsonObject.getString("name" );
+                        String url = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
+
+                        tv_Username.setText(fullName);
+                        Picasso.get().load(url).into(imgProfile);
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            Bundle parameters=new Bundle();
+            parameters.putString("fields","id,name,link,picture.type(large)");
+            request.setParameters(parameters);
+            request.executeAsync();
+
+
+
+        }
+
+        // Jika login menggunakan email
+
+        if(username!=null){
+            tv_Username.setText("Hai, " + username);
+            imgProfile.setVisibility(View.GONE);
         }
     }
 }

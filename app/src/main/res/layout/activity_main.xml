@@ -137,13 +137,201 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <androidx.recyclerview.widget.RecyclerView
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kategori produk"
+                        android:id="@+id/tv2"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:fontFamily="@font/popsem"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:layout_marginRight="@dimen/_16sdp"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/btnBuah"
+                                    android:layout_width="@dimen/_35sdp"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:background="@drawable/m_buah" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:fontFamily="@font/popmed"
+                                    android:textAlignment="center"
+                                    android:text="Buah"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_6sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/btnDaging"
+                                    android:layout_width="@dimen/_35sdp"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:background="@drawable/m_daging" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:fontFamily="@font/popmed"
+                                    android:gravity="center_horizontal"
+                                    android:text="Daging"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_6sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/btnSayur"
+                                    android:layout_width="@dimen/_35sdp"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:background="@drawable/m_sayur" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:fontFamily="@font/popmed"
+                                    android:text="Sayur"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_6sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/btnSusu"
+                                    android:layout_width="@dimen/_35sdp"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:background="@drawable/m_susu" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:fontFamily="@font/popsem"
+                                    android:text="Susu"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_6sdp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/btnTelur"
+                                    android:layout_width="@dimen/_35sdp"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:background="@drawable/m_telur" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:fontFamily="@font/popsem"
+                                    android:text="Telur"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_6sdp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/btnLainnya"
+                                    android:layout_width="@dimen/_35sdp"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:background="@drawable/m_other" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:fontFamily="@font/popsem"
+                                    android:text="Lainnya"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_6sdp" />
+
+                            </LinearLayout>
+
+
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Terlaris hari ini"
+                        android:id="@+id/tv3"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:fontFamily="@font/popsem"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="50dp"
-                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
                         android:layout_marginRight="@dimen/_10sdp"
                         tools:listitem="@layout/item_list"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

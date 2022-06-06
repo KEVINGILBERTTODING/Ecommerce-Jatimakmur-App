@@ -16,6 +16,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -70,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     TextView tv_Username;
     ImageView imgProfile;
     SearchView searchView;
+    ImageButton btnBuah, btnDaging, btnSusu, btnSayur, btnTelur, btnLainnya;
+    ImageButton btnCall, btnLoc, btnChat;
 
     LinearLayout bottomSheetLayout;
     RelativeLayout colapseBottomSheet;
@@ -173,6 +177,8 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                 }
             }
         });
+
+        // Fungsi untuk serchView
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -362,9 +368,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    //tombol search di action bar
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -459,6 +462,17 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         cartRecycler    =   (RecyclerView) findViewById(R.id.rc_cart2);
         mRecyclerview   =   (RecyclerView) findViewById(R.id.recycler_view);
         v_flipper       =   findViewById(R.id.v_flipper);
+
+
+        btnBuah         =   findViewById(R.id.btnBuah);
+        btnSayur        =   findViewById(R.id.btnSayur);
+        btnDaging       =   findViewById(R.id.btnBuah);
+        btnSusu         =   findViewById(R.id.btnSusu);
+        btnTelur        =   findViewById(R.id.btnTelur);
+        btnLainnya      =   findViewById(R.id.btnLainnya);
+        btnCall         =   findViewById(R.id.btnCall);
+        btnLoc          =   findViewById(R.id.btnLokasi);
+        btnChat         =   findViewById(R.id.btnChat);
 
     }
 

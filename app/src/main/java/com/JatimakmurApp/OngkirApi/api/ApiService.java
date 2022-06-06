@@ -1,8 +1,5 @@
 package com.JatimakmurApp.OngkirApi.api;
 
-/**
- * Created by Robby Dianputra on 10/31/2017.
- */
 
 import com.JatimakmurApp.OngkirApi.model.city.ItemCity;
 import com.JatimakmurApp.OngkirApi.model.cost.ItemCost;
@@ -20,12 +17,12 @@ public interface ApiService {
 
     // Province
     @GET("province")
-    @Headers("key:a868f02b0acee22c5cd0b64a4922aa69")
+    @Headers("key:06eb8d23d6c41a1f8c62d7c405b8ff21")
     Call<ItemProvince> getProvince();
 
     // City
     @GET("city")
-    @Headers("key:a868f02b0acee22c5cd0b64a4922aa69")
+    @Headers("key:06eb8d23d6c41a1f8c62d7c405b8ff21")
     Call<ItemCity> getCity(@Query("province") String province);
 
     // Cost

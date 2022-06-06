@@ -66,8 +66,8 @@ public class DetailProdukActivity extends AppCompatActivity {
                 .into(iv_gambar_detail); // mengisikan ke imageView
 
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(nama);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setTitle(nama);
     }
 
     @Override

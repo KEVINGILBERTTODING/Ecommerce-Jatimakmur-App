@@ -120,7 +120,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_16sdp"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:fontFamily="@font/popmed"
+                            android:fontFamily="@font/popsem"
                             android:text="Promo terbaik"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10sdp" />
@@ -160,7 +160,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_16sdp"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:fontFamily="@font/popmed"
+                            android:fontFamily="@font/popsem"
                             android:text="Kategori produk"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10sdp" />
@@ -342,7 +342,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_16sdp"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:fontFamily="@font/popmed"
+                            android:fontFamily="@font/popsem"
                             android:text="Utilitas"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10sdp" />
@@ -454,7 +454,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_16sdp"
-                            android:fontFamily="@font/popmed"
+                            android:fontFamily="@font/popsem"
                             android:text="Terlaris hari ini"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:layout_marginBottom="@dimen/_5sdp"

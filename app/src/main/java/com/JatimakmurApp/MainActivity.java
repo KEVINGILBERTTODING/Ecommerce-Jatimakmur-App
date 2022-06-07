@@ -94,6 +94,10 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Method untuk hide navbar
+
+        hideNavbar();
+
         sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
         username = getIntent().getStringExtra(TAG_USERNAME);
         toast = Toast.makeText(getApplicationContext(), null,Toast.LENGTH_SHORT);
@@ -156,30 +160,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
         loadJson();
 
-
-        btn_clearcart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cart.clear();
-                cartAdapter.notifyDataSetChanged();
-                getTotal();
-                for(int i=0; i< mItems.size(); i++ ){
-                    mItems.get(i).setJmlBeli(0);
-                }
-            }
-        });
-
-        btn_checkout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(cart.isEmpty()){
-                    Toast.makeText(MainActivity.this,"Pilih barang terlebih dahulu", Toast.LENGTH_LONG).show();
-                }else{
-                    startActivity(new Intent(MainActivity.this, OngkirActivity.class));
-                }
-            }
-        });
-
         // Fungsi untuk serchView
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -199,6 +179,13 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         //inisialisasi bottomsheet
 
         initBottomsheet();
+
+    }
+
+    private void hideNavbar() {
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
     }
 
@@ -229,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
             }
         });
 
-        // Menu Kategori
+        // Button  Menu Kategori
 
         btnBuah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,6 +257,39 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, OtherActivity.class));
+            }
+        });
+
+        // Button Utilitas
+
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri number = Uri.parse("tel:082271313698");
+                Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+                startActivity(callIntent);
+
+            }
+        });
+
+        btnLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri gmmIntentUri = Uri.parse("geo: -6.269427,106.9119?q=-6.269427,106.9119");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }
+            }
+        });
+
+        btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String no = "082271313698";
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", no, null)));
+
             }
         });
 

@@ -118,15 +118,7 @@ public class DagingActivity extends AppCompatActivity implements ProdukAdapter.I
         cartRecycler.setHasFixedSize(true);
 
 
-        // Saat dilakukan refresh product
 
-        refreshProduct.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshProduct.setRefreshing(false);
-                loadJson();
-            }
-        });
 
 
         //set recycler view 2 kolom
@@ -144,6 +136,15 @@ public class DagingActivity extends AppCompatActivity implements ProdukAdapter.I
         //mengambil data dari API
 
         loadJson();
+
+        // Saat dilakukan refresh product
+
+        refreshProduct.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshProduct();
+            }
+        });
 
 
 
@@ -168,6 +169,13 @@ public class DagingActivity extends AppCompatActivity implements ProdukAdapter.I
 
         initBottomsheet();
 
+    }
+
+    private void refreshProduct() {
+        refreshProduct.setRefreshing(true);
+        mItems.clear();
+        produkadapter.notifyDataSetChanged();
+        loadJson();
     }
 
     private void buttonListener() {
@@ -431,37 +439,7 @@ public class DagingActivity extends AppCompatActivity implements ProdukAdapter.I
         return super.dispatchTouchEvent(event);
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        AlertDialog.Builder builder = new
-//                AlertDialog.Builder(this);
-//        builder.setCancelable(false);
-//        builder.setMessage("Apakah kamu ingin keluar?");
-//        builder.setPositiveButton("Iya", new
-//                DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int
-//                            which) {
-//                        //if user pressed "yes", then he is allowed to exit from application
-//                        Intent intent = new Intent(Intent.ACTION_MAIN);
-//                        intent.addCategory(Intent.CATEGORY_HOME);
-//                        startActivity(intent);
-//                        int pid = android.os.Process.myPid();
-//                        android.os.Process.killProcess(pid);
-//                    }
-//                });
-//        builder.setNegativeButton("Tidak", new
-//                DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int
-//                            which) {
-//                        //if user select "No", just cancel this dialog and continue with app
-//                        dialog.cancel();
-//                    }
-//                });
-//        AlertDialog alert = builder.create();
-//        alert.show();
-//    }
+
 
     public void checkout(View view) {
         if(cart.isEmpty()){

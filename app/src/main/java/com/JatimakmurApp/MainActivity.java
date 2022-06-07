@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Method untuk hide navbar
+
 
         hideNavbar();
 
@@ -124,15 +124,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         cartRecycler.setHasFixedSize(true);
 
 
-        // Saat dilakukan refresh product
 
-        refreshProduct.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshProduct.setRefreshing(false);
-                loadJson();
-            }
-        });
 
         // Fungsi Flipper
 
@@ -160,6 +152,15 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
         loadJson();
 
+        // Saat dilakukan refresh product
+
+        refreshProduct.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshProduct();
+            }
+        });
+
         // Fungsi untuk serchView
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -180,6 +181,15 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
         initBottomsheet();
 
+    }
+
+    // Method refresh product
+
+    private void refreshProduct() {
+        refreshProduct.setRefreshing(true);
+        mItems.clear();
+        produkadapter.notifyDataSetChanged();
+        loadJson();
     }
 
     private void hideNavbar() {
@@ -294,6 +304,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         });
 
 
+
     }
 
     // Method untuk flipper
@@ -325,7 +336,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     //fungsi ambil data dari API
 
     private void loadJson(){
-        pd.setMessage("Mengambil Data");
+        pd.setMessage("Tunggu Sebentar ...");
         pd.setCancelable(false);
         pd.show();
         JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_DATA,null,

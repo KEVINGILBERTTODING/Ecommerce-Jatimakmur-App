@@ -123,8 +123,7 @@ public class BuahActivity extends AppCompatActivity implements ProdukAdapter.Ite
         refreshProduct.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                refreshProduct.setRefreshing(false);
-                loadJson();
+                refreshProduct();
             }
         });
 
@@ -168,6 +167,13 @@ public class BuahActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
         initBottomsheet();
 
+    }
+
+    private void refreshProduct() {
+        refreshProduct.setRefreshing(true);
+        mItems.clear();
+        produkadapter.notifyDataSetChanged();
+        loadJson();
     }
 
     private void buttonListener() {

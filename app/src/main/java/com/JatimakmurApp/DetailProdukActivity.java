@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +29,8 @@ public class DetailProdukActivity extends AppCompatActivity {
             tv_satuan_detail, tv_hargaBarang_detail, tv_deskripsi_detail;
     ImageView iv_gambar_detail;
 
+    ImageButton btnBack;
+
     String gambar, nama, satuan, deskripsi;
     int jumlah, harga;
     @Override
@@ -37,27 +41,22 @@ public class DetailProdukActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
         username = getIntent().getStringExtra(TAG_USERNAME);
 
-        tv_namaBarang_detail = (TextView) findViewById(R.id.tv_namaBarang_detail);
-        tv_jumlahBarang_detail = (TextView) findViewById(R.id.tv_jumlahBarang_detail);
-        tv_satuan_detail = (TextView) findViewById(R.id.tv_satuan_detail);
-        tv_hargaBarang_detail = (TextView) findViewById(R.id.tv_hargaBarang_detail);
-        tv_deskripsi_detail = (TextView) findViewById(R.id.tv_deskripsi_detail);
-        iv_gambar_detail = (ImageView) findViewById(R.id.iv_gambar_detail);
+        initilize();
 
         NumberFormat nf = NumberFormat.getNumberInstance();
         nf.setMaximumFractionDigits(0);
 
         Intent intent = getIntent();
-        this.gambar = intent.getStringExtra("gambar");
-        this.nama = intent.getStringExtra("nama");
-        this.harga = intent.getIntExtra("harga",0);
-        this.jumlah = intent.getIntExtra("stok",0);
-        this.satuan = intent.getStringExtra("satuan");
-        this.deskripsi = intent.getStringExtra("deskripsi");
+        this.gambar     = intent.getStringExtra("gambar");
+        this.nama       = intent.getStringExtra("nama");
+        this.harga      = intent.getIntExtra("harga",0);
+        this.jumlah     = intent.getIntExtra("stok",0);
+//        this.satuan     = intent.getStringExtra("satuan");
+        this.deskripsi  = intent.getStringExtra("deskripsi");
 
         tv_namaBarang_detail.setText(nama);
-        tv_jumlahBarang_detail.setText(String.valueOf(jumlah));
-        tv_satuan_detail.setText(satuan);
+//        tv_jumlahBarang_detail.setText(String.valueOf(jumlah));
+//        tv_satuan_detail.setText(satuan);
         tv_hargaBarang_detail.setText("Rp. "+nf.format(harga));
         tv_deskripsi_detail.setText(deskripsi);
         Glide.with(DetailProdukActivity.this) //konteks bisa didapat dari activity yang sedang berjalan
@@ -68,6 +67,29 @@ public class DetailProdukActivity extends AppCompatActivity {
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        getSupportActionBar().setTitle(nama);
+
+
+
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    private void initilize() {
+
+        tv_namaBarang_detail    = (TextView) findViewById(R.id.tv_namaBarang_detail);
+//        tv_jumlahBarang_detail  = (TextView) findViewById(R.id.tv_jumlahBarang_detail);
+//        tv_satuan_detail        = (TextView) findViewById(R.id.tv_satuan_detail);
+        tv_hargaBarang_detail   = (TextView) findViewById(R.id.tv_hargaBarang_detail);
+        tv_deskripsi_detail     = (TextView) findViewById(R.id.tv_deskripsi_detail);
+        iv_gambar_detail        = (ImageView) findViewById(R.id.iv_gambar_detail);
+
+        btnBack                 =   findViewById(R.id.btn_back);
+
     }
 
     @Override

@@ -2,17 +2,20 @@ package com.JatimakmurApp;
 
 import static com.JatimakmurApp.LoginActivity.TAG_USERNAME;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -22,14 +25,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.JatimakmurApp.OngkirApi.OngkirActivity;
 import com.JatimakmurApp.Util.ServerAPI;
@@ -41,10 +36,8 @@ import com.bumptech.glide.Glide;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.login.LoginManager;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -54,7 +47,8 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements ProdukAdapter.ItemClickListener {
+
+public class BuahActivity extends AppCompatActivity implements ProdukAdapter.ItemClickListener {
 
     Toast toast;
     public static String username, userName, userImageUrl;
@@ -67,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     public static CartAdapter cartAdapter;
     RecyclerView mRecyclerview;
     RecyclerView cartRecycler;
-    TextView tv_Username;
+    TextView tv_Username, tv_category;
     ImageView imgProfile;
     SearchView searchView;
     ImageButton btnBuah, btnDaging, btnSusu, btnSayur, btnTelur, btnLainnya;
@@ -76,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     LinearLayout bottomSheetLayout;
     RelativeLayout colapseBottomSheet;
     BottomSheetBehavior bottomSheetBehavior;
-    SwipeRefreshLayout  refreshProduct;
+    SwipeRefreshLayout refreshProduct;
 
     MaterialButton btn_checkout, btn_clearcart;
     public static ArrayList<Produk> cart = new ArrayList<>();
@@ -92,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_buah);
 
         sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
         username = getIntent().getStringExtra(TAG_USERNAME);
@@ -104,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         userImageUrl = preferences.getString("userPhoto","");
 
 
-        pd = new ProgressDialog(MainActivity.this);
+        pd = new ProgressDialog(BuahActivity.this);
 
 
         // Inisialisasi method initilize
@@ -114,6 +108,10 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         // Inisialisasi method checkLogin
 
         checkLogin();
+
+        tv_category.setText("Kategori Buah");
+
+        buttonListener();
 
         mRecyclerview.setHasFixedSize(true);
 
@@ -129,15 +127,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                 loadJson();
             }
         });
-
-        // Fungsi Flipper
-
-        setV_flipper();
-
-        // Fungsi saat button diklik
-
-        buttonListener();
-
 
 
         //set recycler view 2 kolom
@@ -157,28 +146,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         loadJson();
 
 
-        btn_clearcart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cart.clear();
-                cartAdapter.notifyDataSetChanged();
-                getTotal();
-                for(int i=0; i< mItems.size(); i++ ){
-                    mItems.get(i).setJmlBeli(0);
-                }
-            }
-        });
 
-        btn_checkout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(cart.isEmpty()){
-                    Toast.makeText(MainActivity.this,"Pilih barang terlebih dahulu", Toast.LENGTH_LONG).show();
-                }else{
-                    startActivity(new Intent(MainActivity.this, OngkirActivity.class));
-                }
-            }
-        });
 
         // Fungsi untuk serchView
 
@@ -222,9 +190,9 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
             @Override
             public void onClick(View v) {
                 if(cart.isEmpty()){
-                    Toast.makeText(MainActivity.this,"Pilih barang terlebih dahulu", Toast.LENGTH_LONG).show();
+                    Toast.makeText(BuahActivity.this,"Pilih barang terlebih dahulu", Toast.LENGTH_LONG).show();
                 }else{
-                    startActivity(new Intent(MainActivity.this, OngkirActivity.class));
+                    startActivity(new Intent(BuahActivity.this, OngkirActivity.class));
                 }
             }
         });
@@ -234,73 +202,48 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         btnBuah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, BuahActivity.class));
+                startActivity(new Intent(BuahActivity.this, BuahActivity.class));
             }
         });
 
         btnSayur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SayurActivity.class));
+                startActivity(new Intent(BuahActivity.this, SayurActivity.class));
             }
         });
 
         btnDaging.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, DagingActivity.class));
+                startActivity(new Intent(BuahActivity.this, DagingActivity.class));
             }
         });
 
         btnTelur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, TelurActivity.class));
+                startActivity(new Intent(BuahActivity.this, TelurActivity.class));
             }
         });
 
         btnSusu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SusuActivity.class));
+                startActivity(new Intent(BuahActivity.this, SusuActivity.class));
             }
         });
 
         btnLainnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, OtherActivity.class));
+                startActivity(new Intent(BuahActivity.this, OtherActivity.class));
             }
         });
 
 
     }
 
-    // Method untuk flipper
-
-    public void setV_flipper(){
-
-        for (int i =0; i<images.length; i++){
-            fliverImages(images[i]);
-        }
-        for (int image: images)
-            fliverImages(image);
-
-    }
-
-
-    // Method untuk set image dan efek fliver
-
-    public void fliverImages(int images){
-        ImageView imageView = new ImageView(this);
-        imageView.setBackgroundResource(images);
-        v_flipper.addView(imageView);
-        v_flipper.setFlipInterval(4000);
-        v_flipper.setAutoStart(true);
-        v_flipper.setInAnimation(this,android.R.anim.slide_in_left);
-        v_flipper.setInAnimation(this,android.R.anim.slide_in_left);
-        v_flipper.setOutAnimation(this,android.R.anim.slide_out_right);
-    }
 
     //fungsi ambil data dari API
 
@@ -308,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         pd.setMessage("Mengambil Data");
         pd.setCancelable(false);
         pd.show();
-        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_DATA,null,
+        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_BUAH,null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -366,91 +309,91 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     //fungsi klik pada daftar barang
 
     public void onClick(View view, int position) {
-            final Produk produk = mItems.get(position);
-            switch (view.getId()) {
-                case R.id.img_card:
-                    produk.setJmlBeli(produk.getJmlBeli()+1);
-                    cart.clear();
-                    for(int i=0; i< mItems.size(); i++ ){
-                        if(mItems.get(i).getJmlBeli()>0){
-                            cart.add(mItems.get(i));
-                        }
+        final Produk produk = mItems.get(position);
+        switch (view.getId()) {
+            case R.id.img_card:
+                produk.setJmlBeli(produk.getJmlBeli()+1);
+                cart.clear();
+                for(int i=0; i< mItems.size(); i++ ){
+                    if(mItems.get(i).getJmlBeli()>0){
+                        cart.add(mItems.get(i));
                     }
-                    getTotal();
-                    cartAdapter.notifyDataSetChanged();
-                    return;
-                default:
-                    Intent intent = new Intent(MainActivity.this, DetailProdukActivity.class);
-                    intent.putExtra("gambar", produk.getImg());
-                    intent.putExtra("nama", produk.getNama());
-                    intent.putExtra("harga", produk.getHarga());
-                    intent.putExtra("stok", produk.getStok());
-                    intent.putExtra("satuan", produk.getSatuan());
-                    intent.putExtra("deskripsi", produk.getDeskripsi());
-                    startActivity(intent);
-                    break;
-            }
-    }
-
-
-    // fungsi untuk option menu
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.action_profile:
-                startActivity(new Intent(MainActivity.this,UpdateUserActivity.class));
-                return true;
-            case R.id.action_history:
-                startActivity(new Intent(MainActivity.this,HistoryActivity.class));
-                return true;
-            case R.id.action_call_center:
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:085155057752"));
-                startActivity(intent);
-                return true;
-            case R.id.action_sms_center:
-                String number = "085155057752";
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number,null)));
-                return true;
-            case R.id.action_maps:
-                Uri gmmIntentUri = Uri.parse("geo:-7.079667,110.329499?q=-7.079667,110.329499");
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(mapIntent);
                 }
-                return true;
-            case R.id.action_logout:
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putBoolean(LoginActivity.session_status, false);
-                editor.putString(TAG_USERNAME, null);
-                editor.commit();
-
-                // logout for facebook
-
-                LoginManager.getInstance().logOut();
-
-                // Logout for google
-
-                FirebaseAuth.getInstance().signOut();
-
-
-                finish();
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                return true;
+                getTotal();
+                cartAdapter.notifyDataSetChanged();
+                return;
             default:
-                return super.onOptionsItemSelected(item);
+                Intent intent = new Intent(BuahActivity.this, DetailProdukActivity.class);
+                intent.putExtra("gambar", produk.getImg());
+                intent.putExtra("nama", produk.getNama());
+                intent.putExtra("harga", produk.getHarga());
+                intent.putExtra("stok", produk.getStok());
+                intent.putExtra("satuan", produk.getSatuan());
+                intent.putExtra("deskripsi", produk.getDeskripsi());
+                startActivity(intent);
+                break;
         }
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        getSupportActionBar().setElevation(0);
-        return true;
-    }
+
+
+//    // fungsi untuk option menu
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle item selection
+//        switch (item.getItemId()) {
+//            case R.id.action_profile:
+//                startActivity(new Intent(BU.this,UpdateUserActivity.class));
+//                return true;
+//            case R.id.action_history:
+//                startActivity(new Intent(MainActivity.this,HistoryActivity.class));
+//                return true;
+//            case R.id.action_call_center:
+//                Intent intent = new Intent(Intent.ACTION_DIAL);
+//                intent.setData(Uri.parse("tel:085155057752"));
+//                startActivity(intent);
+//                return true;
+//            case R.id.action_sms_center:
+//                String number = "085155057752";
+//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number,null)));
+//                return true;
+//            case R.id.action_maps:
+//                Uri gmmIntentUri = Uri.parse("geo:-7.079667,110.329499?q=-7.079667,110.329499");
+//                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//                mapIntent.setPackage("com.google.android.apps.maps");
+//                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+//                    startActivity(mapIntent);
+//                }
+//                return true;
+//            case R.id.action_logout:
+//                SharedPreferences.Editor editor = sharedpreferences.edit();
+//                editor.putBoolean(LoginActivity.session_status, false);
+//                editor.putString(TAG_USERNAME, null);
+//                editor.commit();
+//
+//                // logout for facebook
+//
+//                LoginManager.getInstance().logOut();
+//
+//                // Logout for google
+//
+//                FirebaseAuth.getInstance().signOut();
+//
+//
+//                finish();
+//                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main_menu, menu);
+//        getSupportActionBar().setElevation(0);
+//        return true;
+//    }
 
     //method inisialisasi botttomsheet
     private void initBottomsheet() {
@@ -488,48 +431,49 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         return super.dispatchTouchEvent(event);
     }
 
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new
-                AlertDialog.Builder(this);
-        builder.setCancelable(false);
-        builder.setMessage("Apakah kamu ingin keluar?");
-        builder.setPositiveButton("Iya", new
-                DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int
-                            which) {
-                        //if user pressed "yes", then he is allowed to exit from application
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.addCategory(Intent.CATEGORY_HOME);
-                        startActivity(intent);
-                        int pid = android.os.Process.myPid();
-                        android.os.Process.killProcess(pid);
-                    }
-                });
-        builder.setNegativeButton("Tidak", new
-                DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int
-                            which) {
-                        //if user select "No", just cancel this dialog and continue with app
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        AlertDialog.Builder builder = new
+//                AlertDialog.Builder(this);
+//        builder.setCancelable(false);
+//        builder.setMessage("Apakah kamu ingin keluar?");
+//        builder.setPositiveButton("Iya", new
+//                DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int
+//                            which) {
+//                        //if user pressed "yes", then he is allowed to exit from application
+//                        Intent intent = new Intent(Intent.ACTION_MAIN);
+//                        intent.addCategory(Intent.CATEGORY_HOME);
+//                        startActivity(intent);
+//                        int pid = android.os.Process.myPid();
+//                        android.os.Process.killProcess(pid);
+//                    }
+//                });
+//        builder.setNegativeButton("Tidak", new
+//                DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int
+//                            which) {
+//                        //if user select "No", just cancel this dialog and continue with app
+//                        dialog.cancel();
+//                    }
+//                });
+//        AlertDialog alert = builder.create();
+//        alert.show();
+//    }
 
     public void checkout(View view) {
         if(cart.isEmpty()){
-            Toast.makeText(MainActivity.this,"Pilih barang terlebih dahulu", Toast.LENGTH_LONG).show();
+            Toast.makeText(BuahActivity.this,"Pilih barang terlebih dahulu", Toast.LENGTH_LONG).show();
         }else{
-            startActivity(new Intent(MainActivity.this, OngkirActivity.class));
+            startActivity(new Intent(BuahActivity.this, OngkirActivity.class));
         }
     }
 
     private void initilize(){
         tv_Username     =   findViewById(R.id.tv_UserName);
+        tv_category     =   findViewById(R.id.tv_category);
         imgProfile      =   findViewById(R.id.profile_image);
         searchView      =   findViewById(R.id.search_barr);
         refreshProduct  =   findViewById(R.id.refreshProduct);

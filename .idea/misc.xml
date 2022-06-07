@@ -7,13 +7,20 @@
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/drawable/container_banner.xml" value="0.2195" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/drawable/content3.xml" value="0.319" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/drawable/wave.xml" value="0.1685" />
+        <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_buah.xml" value="0.253515625" />
+        <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_category.xml" value="0.253515625" />
+        <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_daging.xml" value="0.25" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_detail_produk.xml" value="0.23550724637681159" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_login.xml" value="0.3365679264555669" />
-        <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_main.xml" value="0.253515625" />
+        <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_main.xml" value="0.22344322344322345" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_ongkir.xml" value="0.23550724637681159" />
+        <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_other.xml" value="0.25" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_register.xml" value="0.34322916666666664" />
+        <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_sayur.xml" value="0.25" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_splashscreeen.xml" value="0.34322916666666664" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_status.xml" value="0.22780797101449277" />
+        <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_susu.xml" value="0.25" />
+        <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_telur.xml" value="0.25" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/activity_update_user.xml" value="0.22780797101449277" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/item_cart.xml" value="0.3050925925925926" />
         <entry key="..\:/Mata Kuliah/Semester 4/Mobile 2/UAS/Template/KampungAnggrek-Android-master/app/src/main/res/layout/item_category.xml" value="0.22780797101449277" />

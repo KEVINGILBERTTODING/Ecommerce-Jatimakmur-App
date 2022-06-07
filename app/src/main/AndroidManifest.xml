@@ -4,8 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -19,30 +18,52 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name="com.JatimakmurApp.Util.AppController"
+        android:name=".Util.AppController"
         android:allowBackup="true"
         android:icon="@drawable/logo_kampunganggrek"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:requestLegacyExternalStorage="true"
         android:theme="@style/Theme.jatimakmur"
         android:usesCleartextTraffic="true">
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
-
-
-        <activity android:name="com.JatimakmurApp.HistoryActivity"></activity>
-        <activity android:name="com.JatimakmurApp.StatusActivity" />
-        <activity android:name="com.JatimakmurApp.OngkirApi.OngkirActivity" />
-        <activity android:name="com.JatimakmurApp.DetailProdukActivity" />
-        <activity android:name="com.JatimakmurApp.UpdateUserActivity" />
         <activity
-            android:name="com.JatimakmurApp.RegisterActivity"
+            android:name=".BuahActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SayurActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DagingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TelurActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SusuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OtherActivity"
+            android:exported="false" />
+
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
+
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".StatusActivity" />
+        <activity android:name=".OngkirApi.OngkirActivity" />
+        <activity android:name=".DetailProdukActivity" />
+        <activity android:name=".UpdateUserActivity" />
+        <activity
+            android:name=".RegisterActivity"
             android:theme="@style/Theme.LoginScreen" />
         <activity
-            android:name="com.JatimakmurApp.Splashscreeen"
+            android:name=".Splashscreeen"
             android:exported="true"
             android:theme="@style/Theme.SplashScreen">
             <intent-filter>
@@ -52,10 +73,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.JatimakmurApp.LoginActivity"
-            android:theme="@style/Theme.LoginScreen"/>
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.LoginScreen" />
         <activity
-            android:name="com.JatimakmurApp.MainActivity"
+            android:name=".MainActivity"
             android:theme="@style/Theme.jatimakmur" />
 
         <meta-data

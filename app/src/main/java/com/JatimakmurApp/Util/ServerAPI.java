@@ -14,4 +14,11 @@ public class ServerAPI {
     public static final String URL_UPLOAD_GAMBAR = URL + "API/penjualan/upload_bukti.php";
     public static final String DOWNLOAD_NOTA = URL + "index.php/nota/";
     public static final String URL_HISTORY =  URL + "API/show_history.php";
+
+    public static final String URL_BUAH =  URL + "API/produk/buah.php";
+    public static final String URL_SAYUR =  URL + "API/produk/sayur.php";
+    public static final String URL_DAGING =  URL + "API/produk/daging.php";
+    public static final String URL_TELUR =  URL + "API/produk/telur.php";
+    public static final String URL_SUSU =  URL + "API/produk/susu.php";
+    public static final String URL_OTHER =  URL + "API/produk/lainnya.php";
 }

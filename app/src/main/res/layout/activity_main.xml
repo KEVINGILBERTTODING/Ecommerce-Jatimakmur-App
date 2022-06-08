@@ -11,6 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_90sdp"
+            android:orientation="vertical"
+            android:background="@color/white"
+            >
+
 
         <LinearLayout
             android:id="@+id/banner1"
@@ -81,13 +88,14 @@
                 app:searchIcon="@drawable/ic_search"
                 app:theme="@style/AppSearchView" />
 
-        </LinearLayout>
+            </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshProduct"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp">
+            android:layout_height="wrap_content">
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -103,23 +111,16 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="vertical">
+
 
                         <TextView
                             android:id="@+id/tv1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_16sdp"
-                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/popsem"
                             android:text="Promo terbaik"
                             android:textColor="@color/black"
@@ -130,6 +131,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_90sdp"
                             android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_5sdp"
                             android:layout_marginLeft="@dimen/_16sdp"
                             android:layout_marginRight="@dimen/_16sdp"
                             android:layout_marginBottom="@dimen/_10sdp"
@@ -170,7 +172,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_16sdp"
                             android:layout_marginRight="@dimen/_16sdp"
-                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
                             android:scrollbars="none">
 
                             <LinearLayout
@@ -354,6 +356,7 @@
                             android:layout_marginRight="@dimen/_16sdp"
                             android:layout_marginTop="@dimen/_2sdp"
                             android:layout_marginBottom="@dimen/_5sdp"
+                            android:paddingTop="@dimen/_5sdp"
                             android:scrollbars="none">
 
                             <LinearLayout
@@ -450,7 +453,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tv3"
+                            android:id="@+id/tv_category"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_16sdp"
@@ -467,9 +470,8 @@
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginTop="@dimen/_minus3sdp"
-                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_1sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
                         android:paddingBottom="50dp"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         app:layout_behavior="@string/appbar_scrolling_view_behavior"

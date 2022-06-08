@@ -27,6 +27,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProdukViewHold
     public ProdukViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_cart, parent, false);
+
         return new ProdukViewHolder(view);
     }
 
@@ -38,6 +39,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProdukViewHold
         holder.txtNama.setText(listcart.get(position).getNama());
         holder.txtSubtotal.setText("Rp. "+decimalFormat.format((listcart.get(position).getHarga() * listcart.get(position).getJmlBeli())));
         holder.txtHarga.setText("Rp. "+decimalFormat.format(listcart.get(position).getHarga())+" X "+ listcart.get(position).getJmlBeli());
+
+
     }
 
     //mengitung jumlah data yang akan ditampilkan

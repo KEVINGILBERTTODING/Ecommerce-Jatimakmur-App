@@ -27,24 +27,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.jatimakmur"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".BuahActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SayurActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DagingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TelurActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SusuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OtherActivity"
-            android:exported="false" />
 
 
         <meta-data

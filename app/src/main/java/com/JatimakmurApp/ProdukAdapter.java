@@ -87,6 +87,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.ProdukView
         public void onClick(View view) {
             if(clickListener != null) clickListener.onClick(view,
                     getAdapterPosition());
+
         }
     }
 

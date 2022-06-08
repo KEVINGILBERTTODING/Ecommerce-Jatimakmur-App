@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     public static CartAdapter cartAdapter;
     RecyclerView mRecyclerview;
     RecyclerView cartRecycler;
-    TextView tv_Username;
+    TextView tv_Username, tv_category;
     ImageView imgProfile;
     SearchView searchView;
     ImageButton btnBuah, btnDaging, btnSusu, btnSayur, btnTelur, btnLainnya;
@@ -122,8 +122,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         mRecyclerview.setHasFixedSize(true);
 
         cartRecycler.setHasFixedSize(true);
-
-
 
 
         // Fungsi Flipper
@@ -202,7 +200,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     private void buttonListener() {
 
 
-
         btn_clearcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,42 +228,62 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         btnBuah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, BuahActivity.class));
+                mItems.clear();
+                tv_category.setText("Kategori Buah");
+                produkadapter.notifyDataSetChanged();
+                cartAdapter.notifyDataSetChanged();
+                loadMenuBuah();
+
             }
         });
 
         btnSayur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SayurActivity.class));
+                mItems.clear();
+                produkadapter.notifyDataSetChanged();
+                cartAdapter.notifyDataSetChanged();
+                loadMenuSayur();
             }
         });
 
         btnDaging.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, DagingActivity.class));
+                mItems.clear();
+                produkadapter.notifyDataSetChanged();
+                cartAdapter.notifyDataSetChanged();
+                loadMenuDaging();
             }
         });
 
         btnTelur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, TelurActivity.class));
+                mItems.clear();
+                produkadapter.notifyDataSetChanged();
+                cartAdapter.notifyDataSetChanged();
+                loadMenuTelur();
             }
         });
 
         btnSusu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SusuActivity.class));
+                mItems.clear();
+                produkadapter.notifyDataSetChanged();
+                cartAdapter.notifyDataSetChanged();
+                loadMenuSusu();
             }
         });
 
         btnLainnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, OtherActivity.class));
+                mItems.clear();
+                produkadapter.notifyDataSetChanged();
+                cartAdapter.notifyDataSetChanged();
+                loadMenuOther();
             }
         });
 
@@ -340,6 +357,282 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         pd.setCancelable(false);
         pd.show();
         JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_DATA,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        pd.cancel();
+                        Log.d("volley","response : " + response.toString());
+                        for(int i = 0 ; i < response.length(); i++)
+                        {
+                            try {
+                                JSONObject data = response.getJSONObject(i);
+                                Produk md = new Produk();
+                                md.setKode(data.getString("kd_barang"));
+                                md.setNama(data.getString("nm_barang"));
+                                md.setSatuan(data.getString("satuan"));
+                                md.setDeskripsi(data.getString("deskripsi"));
+                                md.setHarga(data.getInt("harga"));
+                                md.setHarga_beli(data.getInt("harga_beli"));
+                                md.setStok(data.getInt("stok"));
+                                md.setStok_min(data.getInt("stok_min"));
+                                md.setImg(data.getString("gambar"));
+                                mItems.add(md);
+                                ProdukAdapter.listBarangfull.add(md); //masukkan ke arraylist listBarangfull yang ada di ProdukAdapter
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        produkadapter.notifyDataSetChanged();
+                        refreshProduct.setRefreshing(false);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pd.cancel();
+                        Log.d("volley", "error : " + error.getMessage());
+                        refreshProduct.setRefreshing(false);
+
+                    }
+                });
+
+        com.JatimakmurApp.Util.AppController.getInstance().addToRequestQueue(reqData);
+    }
+    private void loadMenuBuah(){
+        pd.setMessage("Tunggu Sebentar ...");
+        pd.setCancelable(false);
+        pd.show();
+        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_BUAH,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        pd.cancel();
+                        Log.d("volley","response : " + response.toString());
+                        for(int i = 0 ; i < response.length(); i++)
+                        {
+                            try {
+                                JSONObject data = response.getJSONObject(i);
+                                Produk md = new Produk();
+                                md.setKode(data.getString("kd_barang"));
+                                md.setNama(data.getString("nm_barang"));
+                                md.setSatuan(data.getString("satuan"));
+                                md.setDeskripsi(data.getString("deskripsi"));
+                                md.setHarga(data.getInt("harga"));
+                                md.setHarga_beli(data.getInt("harga_beli"));
+                                md.setStok(data.getInt("stok"));
+                                md.setStok_min(data.getInt("stok_min"));
+                                md.setImg(data.getString("gambar"));
+                                mItems.add(md);
+                                ProdukAdapter.listBarangfull.add(md); //masukkan ke arraylist listBarangfull yang ada di ProdukAdapter
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        produkadapter.notifyDataSetChanged();
+                        refreshProduct.setRefreshing(false);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pd.cancel();
+                        Log.d("volley", "error : " + error.getMessage());
+                        refreshProduct.setRefreshing(false);
+
+                    }
+                });
+
+        com.JatimakmurApp.Util.AppController.getInstance().addToRequestQueue(reqData);
+    }
+    private void loadMenuSayur(){
+        pd.setMessage("Tunggu Sebentar ...");
+        pd.setCancelable(false);
+        pd.show();
+        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_SAYUR,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        pd.cancel();
+                        Log.d("volley","response : " + response.toString());
+                        for(int i = 0 ; i < response.length(); i++)
+                        {
+                            try {
+                                JSONObject data = response.getJSONObject(i);
+                                Produk md = new Produk();
+                                md.setKode(data.getString("kd_barang"));
+                                md.setNama(data.getString("nm_barang"));
+                                md.setSatuan(data.getString("satuan"));
+                                md.setDeskripsi(data.getString("deskripsi"));
+                                md.setHarga(data.getInt("harga"));
+                                md.setHarga_beli(data.getInt("harga_beli"));
+                                md.setStok(data.getInt("stok"));
+                                md.setStok_min(data.getInt("stok_min"));
+                                md.setImg(data.getString("gambar"));
+                                mItems.add(md);
+                                ProdukAdapter.listBarangfull.add(md); //masukkan ke arraylist listBarangfull yang ada di ProdukAdapter
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        produkadapter.notifyDataSetChanged();
+                        refreshProduct.setRefreshing(false);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pd.cancel();
+                        Log.d("volley", "error : " + error.getMessage());
+                        refreshProduct.setRefreshing(false);
+
+                    }
+                });
+
+        com.JatimakmurApp.Util.AppController.getInstance().addToRequestQueue(reqData);
+    }
+    private void loadMenuDaging(){
+        pd.setMessage("Tunggu Sebentar ...");
+        pd.setCancelable(false);
+        pd.show();
+        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_DAGING,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        pd.cancel();
+                        Log.d("volley","response : " + response.toString());
+                        for(int i = 0 ; i < response.length(); i++)
+                        {
+                            try {
+                                JSONObject data = response.getJSONObject(i);
+                                Produk md = new Produk();
+                                md.setKode(data.getString("kd_barang"));
+                                md.setNama(data.getString("nm_barang"));
+                                md.setSatuan(data.getString("satuan"));
+                                md.setDeskripsi(data.getString("deskripsi"));
+                                md.setHarga(data.getInt("harga"));
+                                md.setHarga_beli(data.getInt("harga_beli"));
+                                md.setStok(data.getInt("stok"));
+                                md.setStok_min(data.getInt("stok_min"));
+                                md.setImg(data.getString("gambar"));
+                                mItems.add(md);
+                                ProdukAdapter.listBarangfull.add(md); //masukkan ke arraylist listBarangfull yang ada di ProdukAdapter
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        produkadapter.notifyDataSetChanged();
+                        refreshProduct.setRefreshing(false);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pd.cancel();
+                        Log.d("volley", "error : " + error.getMessage());
+                        refreshProduct.setRefreshing(false);
+
+                    }
+                });
+
+        com.JatimakmurApp.Util.AppController.getInstance().addToRequestQueue(reqData);
+    }
+    private void loadMenuTelur(){
+        pd.setMessage("Tunggu Sebentar ...");
+        pd.setCancelable(false);
+        pd.show();
+        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_TELUR,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        pd.cancel();
+                        Log.d("volley","response : " + response.toString());
+                        for(int i = 0 ; i < response.length(); i++)
+                        {
+                            try {
+                                JSONObject data = response.getJSONObject(i);
+                                Produk md = new Produk();
+                                md.setKode(data.getString("kd_barang"));
+                                md.setNama(data.getString("nm_barang"));
+                                md.setSatuan(data.getString("satuan"));
+                                md.setDeskripsi(data.getString("deskripsi"));
+                                md.setHarga(data.getInt("harga"));
+                                md.setHarga_beli(data.getInt("harga_beli"));
+                                md.setStok(data.getInt("stok"));
+                                md.setStok_min(data.getInt("stok_min"));
+                                md.setImg(data.getString("gambar"));
+                                mItems.add(md);
+                                ProdukAdapter.listBarangfull.add(md); //masukkan ke arraylist listBarangfull yang ada di ProdukAdapter
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        produkadapter.notifyDataSetChanged();
+                        refreshProduct.setRefreshing(false);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pd.cancel();
+                        Log.d("volley", "error : " + error.getMessage());
+                        refreshProduct.setRefreshing(false);
+
+                    }
+                });
+
+        com.JatimakmurApp.Util.AppController.getInstance().addToRequestQueue(reqData);
+    }
+    private void loadMenuSusu(){
+        pd.setMessage("Tunggu Sebentar ...");
+        pd.setCancelable(false);
+        pd.show();
+        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_SUSU,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        pd.cancel();
+                        Log.d("volley","response : " + response.toString());
+                        for(int i = 0 ; i < response.length(); i++)
+                        {
+                            try {
+                                JSONObject data = response.getJSONObject(i);
+                                Produk md = new Produk();
+                                md.setKode(data.getString("kd_barang"));
+                                md.setNama(data.getString("nm_barang"));
+                                md.setSatuan(data.getString("satuan"));
+                                md.setDeskripsi(data.getString("deskripsi"));
+                                md.setHarga(data.getInt("harga"));
+                                md.setHarga_beli(data.getInt("harga_beli"));
+                                md.setStok(data.getInt("stok"));
+                                md.setStok_min(data.getInt("stok_min"));
+                                md.setImg(data.getString("gambar"));
+                                mItems.add(md);
+                                ProdukAdapter.listBarangfull.add(md); //masukkan ke arraylist listBarangfull yang ada di ProdukAdapter
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        produkadapter.notifyDataSetChanged();
+                        refreshProduct.setRefreshing(false);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pd.cancel();
+                        Log.d("volley", "error : " + error.getMessage());
+                        refreshProduct.setRefreshing(false);
+
+                    }
+                });
+
+        com.JatimakmurApp.Util.AppController.getInstance().addToRequestQueue(reqData);
+    }
+    private void loadMenuOther(){
+        pd.setMessage("Tunggu Sebentar ...");
+        pd.setCancelable(false);
+        pd.show();
+        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_OTHER,null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -561,6 +854,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
     private void initilize(){
         tv_Username     =   findViewById(R.id.tv_UserName);
+        tv_category     =   findViewById(R.id.tv_category);
         imgProfile      =   findViewById(R.id.profile_image);
         searchView      =   findViewById(R.id.search_barr);
         refreshProduct  =   findViewById(R.id.refreshProduct);

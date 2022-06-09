@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
         //inisialisasi bottomsheet
 
-        initBottomsheet();
+//        initBottomsheet();
 
     }
 
@@ -776,41 +776,41 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         return true;
     }
 
-    //method inisialisasi botttomsheet
-    private void initBottomsheet() {
-        // get the bottom sheet view
-        bottomSheetLayout = findViewById(R.id.bs_ll);
-        colapseBottomSheet = findViewById(R.id.bs_colapse);
-        // init the bottom sheet behavior
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
-        //ketika bottomsheet di klik maka akan expand
-        colapseBottomSheet.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
-                if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                } else {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                }
-            }
-        });
-    }
+//    //method inisialisasi botttomsheet
+//    private void initBottomsheet() {
+//        // get the bottom sheet view
+//        bottomSheetLayout = findViewById(R.id.bs_ll);
+//        colapseBottomSheet = findViewById(R.id.bs_colapse);
+//        // init the bottom sheet behavior
+//        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
+//        //ketika bottomsheet di klik maka akan expand
+//        colapseBottomSheet.setOnClickListener(new View.OnClickListener() {
+//            @Override public void onClick(View view) {
+//                if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+//                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+//                } else {
+//                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//                }
+//            }
+//        });
+//    }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event){
-
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            //menutup bottom sheet ketika tekan di luar bottomsheet
-            if (bottomSheetBehavior.getState()==BottomSheetBehavior.STATE_EXPANDED) {
-
-                Rect outRect = new Rect();
-                bottomSheetLayout.getGlobalVisibleRect(outRect);
-
-                if(!outRect.contains((int)event.getRawX(), (int)event.getRawY()))
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-            }
-        }
-        return super.dispatchTouchEvent(event);
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent event){
+//
+//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//            //menutup bottom sheet ketika tekan di luar bottomsheet
+//            if (bottomSheetBehavior.getState()==BottomSheetBehavior.STATE_EXPANDED) {
+//
+//                Rect outRect = new Rect();
+//                bottomSheetLayout.getGlobalVisibleRect(outRect);
+//
+//                if(!outRect.contains((int)event.getRawX(), (int)event.getRawY()))
+//                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//            }
+//        }
+//        return super.dispatchTouchEvent(event);
+//    }
 
     @Override
     public void onBackPressed() {

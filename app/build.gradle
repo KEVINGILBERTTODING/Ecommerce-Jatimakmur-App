@@ -79,4 +79,9 @@ dependencies {
     // Dependencies for circleImageView
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+    // Dependencies fot bottom bar
+
+    implementation 'nl.joery.animatedbottombar:library:1.0.4'
 }

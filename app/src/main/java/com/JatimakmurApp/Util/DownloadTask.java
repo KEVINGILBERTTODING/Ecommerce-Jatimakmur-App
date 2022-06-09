@@ -66,7 +66,7 @@ public class DownloadTask {
                     ContextThemeWrapper ctw = new ContextThemeWrapper( context, R.style.AlertDialogCustom);
                     final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
                     //alertDialogBuilder.setTitle("Berhasil di download  ");
-                    alertDialogBuilder.setMessage("Nota disimpan di Penyimpanan Internal/Kampung anggrek/ ");
+                    alertDialogBuilder.setMessage("Nota disimpan di Penyimpanan Internal/Jatimakmur/ ");
                     alertDialogBuilder.setCancelable(false);
                     alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -76,7 +76,7 @@ public class DownloadTask {
 
                     alertDialogBuilder.setNegativeButton("Lihat Nota",new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            File pdfFile = new File(context.getExternalFilesDir(null) + "/Kampung anggrek/" + downloadFileName);  // -> filename = maven.pdf
+                            File pdfFile = new File(context.getExternalFilesDir(null) + "/Jatimakmur/" + downloadFileName);  // -> filename = maven.pdf
                             Uri path = Uri.fromFile(pdfFile);
                             Uri uri = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", pdfFile);
                             Log.d(TAG, "uri : "+uri);
@@ -144,7 +144,7 @@ public class DownloadTask {
                 //Get File if SD card is present
                 if (new CheckForSDCard().isSDCardPresent()) {
 
-                    apkStorage = new File(context.getExternalFilesDir(null) + "/" + "Kampung anggrek");
+                    apkStorage = new File(context.getExternalFilesDir(null) + "/" + "Jatimakmur");
                 } else
                     Toast.makeText(context, "Oops!! There is no SD Card.", Toast.LENGTH_SHORT).show();
 

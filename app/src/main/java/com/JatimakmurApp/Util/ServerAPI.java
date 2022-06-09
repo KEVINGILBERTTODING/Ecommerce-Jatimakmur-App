@@ -1,7 +1,7 @@
 package com.JatimakmurApp.Util;
 
 public class ServerAPI {
-    public static String URL = "http://192.168.11.19/kampung_anggrek/";
+    public static String URL = "http://192.168.11.19/jatimakmur/";
     public static final String URL_DATA =  URL + "API/view_data.php";
     public static final String URL_LOGIN =  URL + "API/login.php";
     public static final String URL_REGISTER =  URL + "API/register.php";

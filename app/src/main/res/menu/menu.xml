@@ -7,7 +7,7 @@
         android:title="Beranda" />
 
     <item
-        android:id="@+id/book"
+        android:id="@+id/history"
         android:icon="@drawable/ic_history"
         android:title="Riwayat" />
 

@@ -1,6 +1,9 @@
 package com.JatimakmurApp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
@@ -19,6 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.JatimakmurApp.Util.AppController;
 import com.JatimakmurApp.Util.ServerAPI;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +31,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import nl.joery.animatedbottombar.AnimatedBottomBar;
 
 public class HistoryActivity extends AppCompatActivity implements HistoryAdapter.ItemClickListener {
     SharedPreferences sharedpreferences;
@@ -35,10 +42,16 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
     private RecyclerView historyRecycler;
     private HistoryAdapter historyAdapter;
 
+    private static final String TAG = MainActivity.class.getSimpleName();
+    AnimatedBottomBar animatedBottomBar;
+    FragmentManager fragmentManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+        animatedBottomBar = findViewById(R.id.animatedBottomBar);
 
         sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
         kd_konsumen = sharedpreferences.getString("kode_konsumen", null);
@@ -51,6 +64,52 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         historyAdapter = new HistoryAdapter(listPembelian,HistoryActivity.this);
         historyAdapter.setClickListener(this);
         historyRecycler.setAdapter(historyAdapter);
+
+
+        if (savedInstanceState == null) {
+            animatedBottomBar.selectTabById(R.id.history, true);
+//            fragmentManager = getSupportFragmentManager();
+//            AccountFragment accountFragment = new AccountFragment();
+//            fragmentManager.beginTransaction().replace(R.id.main_container, accountFragment).commit();
+
+        }
+        animatedBottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
+            @Override
+            public void onTabSelected(int lastIndex, @Nullable AnimatedBottomBar.Tab lastTab, int newIndex, @NotNull AnimatedBottomBar.Tab newTab) {
+                Fragment fragment = null;
+                switch (newTab.getId()) {
+                    case R.id.home:
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                startActivity(new Intent(HistoryActivity.this, MainActivity.class));
+                            }
+                        }, 500);
+
+                        break;
+                    case R.id.history:
+
+                        break;
+                    case R.id.account:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                startActivity(new Intent(HistoryActivity.this, UpdateUserActivity.class));
+                            }
+                        }, 500);
+                        break;
+                }
+
+                if (fragment != null) {
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.main_container, fragment)
+                            .commit();
+                } else {
+                    Log.e(TAG, "Error in creating Fragment");
+                }
+            }
+        });
 
     }
 

@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,9 +24,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,12 +51,15 @@ import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import nl.joery.animatedbottombar.AnimatedBottomBar;
 
 public class MainActivity extends AppCompatActivity implements ProdukAdapter.ItemClickListener {
 
@@ -72,6 +79,11 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     SearchView searchView;
     ImageButton btnBuah, btnDaging, btnSusu, btnSayur, btnTelur, btnLainnya;
     ImageButton btnCall, btnLoc, btnChat;
+
+    private static final String TAG = MainActivity.class.getSimpleName();
+    AnimatedBottomBar animatedBottomBar;
+    FragmentManager fragmentManager;
+
 
     LinearLayout bottomSheetLayout;
     RelativeLayout colapseBottomSheet;
@@ -178,6 +190,53 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         //inisialisasi bottomsheet
 
 //        initBottomsheet();
+
+        if (savedInstanceState == null) {
+            animatedBottomBar.selectTabById(R.id.home, true);
+//            fragmentManager = getSupportFragmentManager();
+//            AccountFragment accountFragment = new AccountFragment();
+//            fragmentManager.beginTransaction().replace(R.id.main_container, accountFragment).commit();
+
+        }
+        animatedBottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
+            @Override
+            public void onTabSelected(int lastIndex, @Nullable AnimatedBottomBar.Tab lastTab, int newIndex, @NotNull AnimatedBottomBar.Tab newTab) {
+                Fragment fragment = null;
+                switch (newTab.getId()) {
+                    case R.id.home:
+
+
+                        break;
+                    case R.id.history:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+                            }
+                        }, 500);
+
+                        break;
+                    case R.id.account:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                startActivity(new Intent(MainActivity.this, UpdateUserActivity.class));
+                            }
+                        }, 500);
+                        break;
+                }
+
+                if (fragment != null) {
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.main_container, fragment)
+                            .commit();
+                } else {
+                    Log.e(TAG, "Error in creating Fragment");
+                }
+            }
+        });
+
+
 
     }
 
@@ -874,6 +933,8 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         btnCall         =   findViewById(R.id.btnCall);
         btnLoc          =   findViewById(R.id.btnLokasi);
         btnChat         =   findViewById(R.id.btnChat);
+
+        animatedBottomBar = findViewById(R.id.animatedBottomBar);
 
     }
 

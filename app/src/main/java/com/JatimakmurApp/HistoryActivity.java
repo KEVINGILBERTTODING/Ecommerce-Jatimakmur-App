@@ -51,26 +51,38 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-        animatedBottomBar = findViewById(R.id.animatedBottomBar);
 
         sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
         kd_konsumen = sharedpreferences.getString("kode_konsumen", null);
-        pd = new ProgressDialog(HistoryActivity.this);
 
-        historyRecycler = (RecyclerView) findViewById(R.id.rv_pembelian);
+
+        // Untuk menyembunyikan navbar
+
+        hideNavbar();
+
+        initilize();
+
+
+        
+        
+        
+        pd = new ProgressDialog(HistoryActivity.this);
+        
         historyRecycler.setHasFixedSize(true);
-        loadJson();
         historyRecycler.setLayoutManager(new LinearLayoutManager(this));
         historyAdapter = new HistoryAdapter(listPembelian,HistoryActivity.this);
         historyAdapter.setClickListener(this);
         historyRecycler.setAdapter(historyAdapter);
 
+        // Filter data produk agar tidak double saat pindah activity
+
+        filterDataDouble();
+        
+        
+        // Fungsi untuk bottom bar
 
         if (savedInstanceState == null) {
             animatedBottomBar.selectTabById(R.id.history, true);
-//            fragmentManager = getSupportFragmentManager();
-//            AccountFragment accountFragment = new AccountFragment();
-//            fragmentManager.beginTransaction().replace(R.id.main_container, accountFragment).commit();
 
         }
         animatedBottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
@@ -101,15 +113,31 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
                         break;
                 }
 
-                if (fragment != null) {
-                    fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.main_container, fragment)
-                            .commit();
-                } else {
-                    Log.e(TAG, "Error in creating Fragment");
-                }
             }
         });
+
+    }
+
+    private void filterDataDouble() {
+        if (historyRecycler.getAdapter().getItemCount() == 0) {
+            loadJson();
+
+        } else {
+
+
+        }
+    }
+
+
+    private void initilize() {
+        animatedBottomBar = findViewById(R.id.animatedBottomBar);
+        historyRecycler = (RecyclerView) findViewById(R.id.rv_pembelian);
+    }
+
+    private void hideNavbar() {
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
     }
 

@@ -59,54 +59,53 @@ public class UpdateUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user);
 
+
+        // Get data from shared preferences
+
+        getSharedPref();
+
+
+        // Untuk menyembunyikan navbar
+
+        hideNavbar();
+
         pd = new ProgressDialog(UpdateUserActivity.this);
 
-        sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
-        username = sharedpreferences.getString("username", null);
-        kode_konsumen = sharedpreferences.getString("kode_konsumen", null);
+
 
         Log.d("kodekonsumen", kode_konsumen);
 
-        ti_email = findViewById(R.id.ti_email_updateUser);
-        ti_fullname  = findViewById(R.id.ti_fullname_updateUser);
-        ti_hp  = findViewById(R.id.ti_hp_updateUser);
-        ti_kota  = findViewById(R.id.ti_kota_updateUser);
-        ti_kodepos  = findViewById(R.id.ti_kodepos_updateUser);
-        ti_alamat  = findViewById(R.id.ti_alamat_updateUser);
-        iv_gambar  = findViewById(R.id.iv_fotoProfile);
-        btn_saveProfile = findViewById(R.id.btn_saveupdateUser);
-        tv_username = findViewById(R.id.tv_usernameUpdate);
-        tv_updateLogin = findViewById(R.id.tv_editLogin);
-        animatedBottomBar = findViewById(R.id.animatedBottomBar);
+
+        initilize();
 
         tv_username.setText(username);
 
         loadProfile();
 
-        btn_saveProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateProfile();
-            }
-        });
+        // Fungsi saat button di klik
+        btnClickListener();
 
-        tv_updateLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("tag", "onClick: bisa klik cok");
-                DialogForm();
-            }
-        });
-
-        //        initBottomsheet();
+        // Set bottombar active
 
         if (savedInstanceState == null) {
             animatedBottomBar.selectTabById(R.id.account, true);
-//            fragmentManager = getSupportFragmentManager();
-//            AccountFragment accountFragment = new AccountFragment();
-//            fragmentManager.beginTransaction().replace(R.id.main_container, accountFragment).commit();
+
 
         }
+
+        // Saat menu bottom bar di klik
+        bottomBarListener();
+
+
+    }
+
+    private void getSharedPref() {
+        sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
+        username = sharedpreferences.getString("username", null);
+        kode_konsumen = sharedpreferences.getString("kode_konsumen", null);
+    }
+
+    private void bottomBarListener() {
         animatedBottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
             @Override
             public void onTabSelected(int lastIndex, @Nullable AnimatedBottomBar.Tab lastTab, int newIndex, @NotNull AnimatedBottomBar.Tab newTab) {
@@ -136,20 +135,48 @@ public class UpdateUserActivity extends AppCompatActivity {
                         break;
                 }
 
-                if (fragment != null) {
-                    fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.main_container, fragment)
-                            .commit();
-                } else {
-                    Log.e(TAG, "Error in creating Fragment");
-                }
+
+            }
+        });
+    }
+
+    private void btnClickListener() {
+        btn_saveProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateProfile();
             }
         });
 
+        tv_updateLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("tag", "onClick: bisa klik cok");
+                DialogForm();
+            }
+        });
+    }
 
+    private void initilize() {
+        ti_email = findViewById(R.id.ti_email_updateUser);
+        ti_fullname  = findViewById(R.id.ti_fullname_updateUser);
+        ti_hp  = findViewById(R.id.ti_hp_updateUser);
+        ti_kota  = findViewById(R.id.ti_kota_updateUser);
+        ti_kodepos  = findViewById(R.id.ti_kodepos_updateUser);
+        ti_alamat  = findViewById(R.id.ti_alamat_updateUser);
+        iv_gambar  = findViewById(R.id.iv_fotoProfile);
+        btn_saveProfile = findViewById(R.id.btn_saveupdateUser);
+        tv_username = findViewById(R.id.tv_usernameUpdate);
+        tv_updateLogin = findViewById(R.id.tv_editLogin);
+        animatedBottomBar = findViewById(R.id.animatedBottomBar);
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setTitle("Profil");
+    }
+
+    private void hideNavbar() {
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
     }
 
     private void updateProfile() {

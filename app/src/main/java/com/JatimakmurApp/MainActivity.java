@@ -108,20 +108,13 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
 
 
+        // Untuk menyembunyikan navbar
         hideNavbar();
 
-        sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
-        username = getIntent().getStringExtra(TAG_USERNAME);
-        toast = Toast.makeText(getApplicationContext(), null,Toast.LENGTH_SHORT);
-
-
-        SharedPreferences preferences = this.getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        userName = preferences.getString("username","");
-        userImageUrl = preferences.getString("userPhoto","");
-
+        // Get data from shared preferences
+        getSharedPrefs();
 
         pd = new ProgressDialog(MainActivity.this);
-
 
         // Inisialisasi method initilize
 
@@ -131,40 +124,22 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
         checkLogin();
 
-        mRecyclerview.setHasFixedSize(true);
-
-        cartRecycler.setHasFixedSize(true);
-
-
         // Fungsi Flipper
 
         setV_flipper();
 
         // Fungsi saat button diklik
-
         buttonListener();
 
-
-
         //set recycler view 2 kolom
+        recyclerProduct();
 
-        GridLayoutManager layoutManager=new GridLayoutManager(this,2);
-        mRecyclerview.setLayoutManager(layoutManager);
-        produkadapter = new ProdukAdapter(mItems, this); //memanggil adapter
-        mRecyclerview.setAdapter(produkadapter);
-        produkadapter.setClickListener(this);
-
-        cartRecycler.setLayoutManager(new LinearLayoutManager(this));
-        cartAdapter = new CartAdapter(cart);
-        cartRecycler.setAdapter(cartAdapter);
-
+        recyclerCart();
 
         // Fungsi agar data produk yang ditampilkan tidak double
-
         filterDataDouble();
 
         // Saat dilakukan refresh product
-
         refreshProduct.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -173,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         });
 
         // Fungsi untuk serchView
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -188,17 +162,50 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
             }
         });
 
-        //inisialisasi bottomsheet
 
-//        initBottomsheet();
-
+        // Fungsi untuk bottom bar
         if (savedInstanceState == null) {
             animatedBottomBar.selectTabById(R.id.home, true);
-//            fragmentManager = getSupportFragmentManager();
-//            AccountFragment accountFragment = new AccountFragment();
-//            fragmentManager.beginTransaction().replace(R.id.main_container, accountFragment).commit();
 
         }
+
+        // Saat menu bottom bar di klik
+        bottomBarListener();
+
+
+    }
+
+    private void recyclerCart() {
+        cartRecycler.setHasFixedSize(true);
+        cartRecycler.setLayoutManager(new LinearLayoutManager(this));
+        cartAdapter = new CartAdapter(cart);
+        cartRecycler.setAdapter(cartAdapter);
+
+    }
+
+    private void recyclerProduct() {
+        mRecyclerview.setHasFixedSize(true);
+        GridLayoutManager layoutManager=new GridLayoutManager(this,2);
+        mRecyclerview.setLayoutManager(layoutManager);
+        produkadapter = new ProdukAdapter(mItems, this); //memanggil adapter
+        mRecyclerview.setAdapter(produkadapter);
+        produkadapter.setClickListener(this);
+    }
+
+    private void getSharedPrefs() {
+        sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
+        username = getIntent().getStringExtra(TAG_USERNAME);
+        toast = Toast.makeText(getApplicationContext(), null,Toast.LENGTH_SHORT);
+
+
+        SharedPreferences preferences = this.getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        userName = preferences.getString("username","");
+        userImageUrl = preferences.getString("userPhoto","");
+
+    }
+
+
+    private void bottomBarListener() {
         animatedBottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
             @Override
             public void onTabSelected(int lastIndex, @Nullable AnimatedBottomBar.Tab lastTab, int newIndex, @NotNull AnimatedBottomBar.Tab newTab) {
@@ -230,12 +237,9 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
             }
         });
-
-
-
     }
 
-    // Method fiter data double
+    // // Filter data produk agar tidak double saat pindah activity
 
     private void filterDataDouble() {
         if (mRecyclerview.getAdapter().getItemCount() == 0) {
@@ -392,7 +396,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     }
 
     // Method untuk flipper
-
     public void setV_flipper(){
 
         for (int i =0; i<images.length; i++){
@@ -405,7 +408,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
 
     // Method untuk set image dan efek fliver
-
     public void fliverImages(int images){
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundResource(images);
@@ -416,8 +418,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         v_flipper.setInAnimation(this,android.R.anim.slide_in_left);
         v_flipper.setOutAnimation(this,android.R.anim.slide_out_right);
     }
-
-    //fungsi ambil data dari API
 
     private void loadJson(){
         pd.setMessage("Tunggu Sebentar ...");
@@ -755,7 +755,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     }
 
     //fungsi klik pada daftar barang
-
     public void onClick(View view, int position) {
             final Produk produk = mItems.get(position);
             switch (view.getId()) {
@@ -783,9 +782,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
             }
     }
 
-
     // fungsi untuk option menu
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -843,41 +840,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         return true;
     }
 
-//    //method inisialisasi botttomsheet
-//    private void initBottomsheet() {
-//        // get the bottom sheet view
-//        bottomSheetLayout = findViewById(R.id.bs_ll);
-//        colapseBottomSheet = findViewById(R.id.bs_colapse);
-//        // init the bottom sheet behavior
-//        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
-//        //ketika bottomsheet di klik maka akan expand
-//        colapseBottomSheet.setOnClickListener(new View.OnClickListener() {
-//            @Override public void onClick(View view) {
-//                if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-//                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-//                } else {
-//                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//                }
-//            }
-//        });
-//    }
-
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent event){
-//
-//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//            //menutup bottom sheet ketika tekan di luar bottomsheet
-//            if (bottomSheetBehavior.getState()==BottomSheetBehavior.STATE_EXPANDED) {
-//
-//                Rect outRect = new Rect();
-//                bottomSheetLayout.getGlobalVisibleRect(outRect);
-//
-//                if(!outRect.contains((int)event.getRawX(), (int)event.getRawY()))
-//                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//            }
-//        }
-//        return super.dispatchTouchEvent(event);
-//    }
 
     @Override
     public void onBackPressed() {

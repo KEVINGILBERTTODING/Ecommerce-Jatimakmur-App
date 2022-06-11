@@ -52,9 +52,8 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
-        kd_konsumen = sharedpreferences.getString("kode_konsumen", null);
-
+        // Get data from shared preferences
+        getSharedPrefs();
 
         // Untuk menyembunyikan navbar
 
@@ -62,17 +61,9 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
 
         initilize();
 
-
-        
-        
-        
         pd = new ProgressDialog(HistoryActivity.this);
         
-        historyRecycler.setHasFixedSize(true);
-        historyRecycler.setLayoutManager(new LinearLayoutManager(this));
-        historyAdapter = new HistoryAdapter(listPembelian,HistoryActivity.this);
-        historyAdapter.setClickListener(this);
-        historyRecycler.setAdapter(historyAdapter);
+        recyclerHistory();
 
         // Filter data produk agar tidak double saat pindah activity
 
@@ -85,6 +76,26 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
             animatedBottomBar.selectTabById(R.id.history, true);
 
         }
+
+        // Saat menu bottom bar di klik
+        bottombarListener();
+
+    }
+
+    private void recyclerHistory() {
+        historyRecycler.setHasFixedSize(true);
+        historyRecycler.setLayoutManager(new LinearLayoutManager(this));
+        historyAdapter = new HistoryAdapter(listPembelian,HistoryActivity.this);
+        historyAdapter.setClickListener(this);
+        historyRecycler.setAdapter(historyAdapter);
+    }
+
+    private void getSharedPrefs() {
+        sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
+        kd_konsumen = sharedpreferences.getString("kode_konsumen", null);
+    }
+
+    private void bottombarListener() {
         animatedBottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
             @Override
             public void onTabSelected(int lastIndex, @Nullable AnimatedBottomBar.Tab lastTab, int newIndex, @NotNull AnimatedBottomBar.Tab newTab) {
@@ -115,7 +126,6 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
 
             }
         });
-
     }
 
     private void filterDataDouble() {

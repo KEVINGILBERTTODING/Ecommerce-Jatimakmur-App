@@ -1,5 +1,8 @@
 package com.JatimakmurApp;
 
+import static com.JatimakmurApp.LoginActivity.TAG_USERNAME;
+import static com.JatimakmurApp.LoginActivity.my_shared_preferences;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -26,9 +29,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.facebook.login.LoginManager;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.JatimakmurApp.Util.ServerAPI;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -40,12 +45,12 @@ import java.util.Map;
 
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
-public class UpdateUserActivity extends AppCompatActivity {
+public class UpdateUserActivity extends  AppCompatActivity {
     SharedPreferences sharedpreferences;
     String username, kode_konsumen;
     private TextInputEditText ti_email, ti_fullname, ti_hp, ti_kota, ti_kodepos, ti_alamat;
     private ImageView iv_gambar;
-    Button btn_saveProfile;
+    Button btn_saveProfile, btn_logout;
     TextView tv_username, tv_updateLogin;
     ProgressDialog pd;
 
@@ -89,7 +94,6 @@ public class UpdateUserActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             animatedBottomBar.selectTabById(R.id.account, true);
-
 
         }
 
@@ -155,19 +159,41 @@ public class UpdateUserActivity extends AppCompatActivity {
                 DialogForm();
             }
         });
+
+        btn_logout.setOnClickListener(view -> {
+            Intent intent = new Intent();
+            String data;
+
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putBoolean(LoginActivity.session_status, false);
+            editor.putString(TAG_USERNAME, null);
+            editor.commit();
+
+            // logout for facebook
+
+            LoginManager.getInstance().logOut();
+
+            // logout for google
+            FirebaseAuth.getInstance().signOut();
+
+            intent.setClass(UpdateUserActivity.this, LoginActivity.class);
+            finish();
+            startActivity(intent);
+        });
     }
 
     private void initilize() {
-        ti_email = findViewById(R.id.ti_email_updateUser);
-        ti_fullname  = findViewById(R.id.ti_fullname_updateUser);
-        ti_hp  = findViewById(R.id.ti_hp_updateUser);
-        ti_kota  = findViewById(R.id.ti_kota_updateUser);
-        ti_kodepos  = findViewById(R.id.ti_kodepos_updateUser);
-        ti_alamat  = findViewById(R.id.ti_alamat_updateUser);
-        iv_gambar  = findViewById(R.id.iv_fotoProfile);
+        ti_email        = findViewById(R.id.ti_email_updateUser);
+        btn_logout      =   findViewById(R.id.btn_logout);
+        ti_fullname     = findViewById(R.id.ti_fullname_updateUser);
+        ti_hp           = findViewById(R.id.ti_hp_updateUser);
+        ti_kota         = findViewById(R.id.ti_kota_updateUser);
+        ti_kodepos      = findViewById(R.id.ti_kodepos_updateUser);
+        ti_alamat       = findViewById(R.id.ti_alamat_updateUser);
+        iv_gambar       = findViewById(R.id.iv_fotoProfile);
         btn_saveProfile = findViewById(R.id.btn_saveupdateUser);
-        tv_username = findViewById(R.id.tv_usernameUpdate);
-        tv_updateLogin = findViewById(R.id.tv_editLogin);
+        tv_username     = findViewById(R.id.tv_usernameUpdate);
+        tv_updateLogin  = findViewById(R.id.tv_editLogin);
         animatedBottomBar = findViewById(R.id.animatedBottomBar);
 
     }

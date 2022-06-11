@@ -163,6 +163,14 @@
             android:textColor="#fff"
             android:textStyle="bold"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Log Out"
+            android:textColor="#fff"
+            android:textStyle="bold"/>
+
 
     </LinearLayout>
 

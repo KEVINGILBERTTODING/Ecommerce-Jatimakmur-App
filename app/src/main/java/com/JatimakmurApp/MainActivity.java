@@ -158,9 +158,10 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         cartAdapter = new CartAdapter(cart);
         cartRecycler.setAdapter(cartAdapter);
 
-        //mengambil data dari API
 
-        loadJson();
+        // Fungsi agar data produk yang ditampilkan tidak double
+
+        filterDataDouble();
 
         // Saat dilakukan refresh product
 
@@ -226,17 +227,24 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                         break;
                 }
 
-                if (fragment != null) {
-                    fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.main_container, fragment)
-                            .commit();
-                } else {
-                    Log.e(TAG, "Error in creating Fragment");
-                }
+
             }
         });
 
 
+
+    }
+
+    // Method fiter data double
+
+    private void filterDataDouble() {
+        if (mRecyclerview.getAdapter().getItemCount() == 0) {
+            loadJson();
+
+        } else {
+
+
+        }
 
     }
 

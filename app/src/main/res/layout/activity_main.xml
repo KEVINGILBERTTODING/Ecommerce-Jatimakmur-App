@@ -44,6 +44,7 @@
                             android:textColor="@color/white"
                             android:textSize="@dimen/_8sdp" />
 
+
                         <ImageView
                             android:layout_width="@dimen/_12sdp"
                             android:layout_height="@dimen/_12sdp"

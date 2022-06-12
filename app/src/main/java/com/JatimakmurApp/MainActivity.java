@@ -74,16 +74,17 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     public static CartAdapter cartAdapter;
     RecyclerView mRecyclerview;
     RecyclerView cartRecycler;
-    TextView tv_Username, tv_category;
+    TextView tv_Username, tv_category, tvUsername2;
     ImageView imgProfile;
     SearchView searchView;
     ImageButton btnBuah, btnDaging, btnSusu, btnSayur, btnTelur, btnLainnya;
     ImageButton btnCall, btnLoc, btnChat;
+    public static final String TAG_USERNAME = "username";
+    String uname;
 
     private static final String TAG = MainActivity.class.getSimpleName();
     AnimatedBottomBar animatedBottomBar;
     FragmentManager fragmentManager;
-
 
     LinearLayout bottomSheetLayout;
     RelativeLayout colapseBottomSheet;
@@ -105,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         // Untuk menyembunyikan navbar
@@ -219,7 +219,9 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+                                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                                intent.putExtra(TAG_USERNAME, username);
+                                startActivity(intent);
                             }
                         }, 500);
 
@@ -961,6 +963,8 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         if(username!=null){
             tv_Username.setText("Hai, " + username);
             imgProfile.setVisibility(View.GONE);
+
+
         }
     }
 }

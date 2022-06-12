@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -56,6 +57,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         // Get data from shared preferences
         getSharedPrefs();
 
+
         // Untuk menyembunyikan navbar
 
         hideNavbar();
@@ -69,6 +71,8 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         // Filter data produk agar tidak double saat pindah activity
 
         filterDataDouble();
+        Intent intent = getIntent();
+        intent.getStringExtra(TAG_USERNAME);
         
         
         // Fungsi untuk bottom bar
@@ -109,7 +113,9 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                startActivity(new Intent(HistoryActivity.this, MainActivity.class));
+                                Intent intent = new Intent(HistoryActivity.this, MainActivity.class);
+                                intent.putExtra(TAG_USERNAME, username);
+                                startActivity(intent);
                             }
                         }, 500);
 

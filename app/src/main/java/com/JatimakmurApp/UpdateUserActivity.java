@@ -121,7 +121,9 @@ public class UpdateUserActivity extends  AppCompatActivity {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                startActivity(new Intent(UpdateUserActivity.this, MainActivity.class));
+                              Intent intent = new Intent(UpdateUserActivity.this, MainActivity.class);
+                              intent.putExtra(TAG_USERNAME, username);
+                              startActivity(intent);
                             }
                         }, 500);
 

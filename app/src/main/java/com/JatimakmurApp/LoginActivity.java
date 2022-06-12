@@ -101,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
 
 
+
         // Fungsi untuk menyembunyikan navbar
 
         getWindow().getDecorView().setSystemUiVisibility(

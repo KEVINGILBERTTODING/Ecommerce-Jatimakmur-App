@@ -36,11 +36,12 @@ import nl.joery.animatedbottombar.AnimatedBottomBar;
 
 public class HistoryActivity extends AppCompatActivity implements HistoryAdapter.ItemClickListener {
     SharedPreferences sharedpreferences;
-    String kd_konsumen;
+    String kd_konsumen, username;
     ProgressDialog pd;
     public static ArrayList<Pembelian> listPembelian = new ArrayList<>();
     private RecyclerView historyRecycler;
     private HistoryAdapter historyAdapter;
+    public static final String TAG_USERNAME = "username";
 
     private static final String TAG = MainActivity.class.getSimpleName();
     AnimatedBottomBar animatedBottomBar;
@@ -93,6 +94,8 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
     private void getSharedPrefs() {
         sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
         kd_konsumen = sharedpreferences.getString("kode_konsumen", null);
+        username = getIntent().getStringExtra(TAG_USERNAME);
+
     }
 
     private void bottombarListener() {

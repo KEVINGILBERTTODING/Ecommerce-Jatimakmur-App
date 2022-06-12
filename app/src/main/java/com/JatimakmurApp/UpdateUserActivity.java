@@ -65,6 +65,7 @@ public class UpdateUserActivity extends  AppCompatActivity {
         setContentView(R.layout.activity_update_user);
 
 
+
         // Get data from shared preferences
 
         getSharedPref();

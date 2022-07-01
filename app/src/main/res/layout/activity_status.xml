@@ -8,10 +8,13 @@
     android:background="@color/container"
     tools:context=".StatusActivity">
 
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_170sdp"
         android:background="@drawable/coantainer_struk"
+
         />
 
 
@@ -19,10 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_16sdp"
+        android:id="@+id/header_struk"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/btn_back"
+            android:onClick="back"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
@@ -32,16 +37,31 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/header_struk"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+
 <!--    Layout struk pembayaran-->
 
 
 
     <RelativeLayout
-        android:id="@+id/strukpembarayaran"
+        android:id="@+id/struk_pembayaran"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:layout_marginLeft="@dimen/_30sdp"
-        android:visibility="gone"
         android:layout_marginRight="@dimen/_30sdp"
 
         >
@@ -50,7 +70,7 @@
             android:id="@+id/secondlayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_550sdp"
-            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:background="@drawable/strukpembayaran"
             android:padding="@dimen/_16sdp"
 
@@ -347,7 +367,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/s99"
-                android:layout_marginTop="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_30sdp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -377,10 +397,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/s10"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/popmed"
                 android:text="Terima kasih telah berbelanja di Toko Kami."
                 android:textColor="@color/main2"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:textSize="@dimen/_7sdp" />
 
             <com.google.android.material.button.MaterialButton
@@ -401,7 +421,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_55sdp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:src="@drawable/success" />
 
 
@@ -417,197 +437,197 @@
     <!--    Struk tagihan pembayaran-->
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_30sdp"
-        android:id="@+id/struktagihan"
-        >
-
-
-
-        <RelativeLayout
-            android:id="@+id/firstlayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_340sdp"
-            android:layout_marginTop="@dimen/_70sdp"
-            android:background="@drawable/struktagihan"
-            android:padding="@dimen/_16sdp"
-
-            >
-
-            <TextView
-                android:id="@+id/tv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:fontFamily="@font/popsem"
-                android:text="Transfer ke Rekening"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp" />
-
-            <TextView
-                android:id="@+id/tv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv1"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/popsem"
-                android:text="089092389901123"
-                android:textColor="@color/main2"
-                android:textSize="@dimen/_13sdp" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/ll1"
+            <RelativeLayout
+                android:id="@+id/struk_tagihan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv2"
-                android:layout_marginTop="@dimen/_70sdp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:text="Nominal Pembelian"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:gravity="right"
-                    android:id="@+id/total_beli"
-                    android:text="Rp. 1.000.000"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/ll22"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ll1"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:text="Biaya Pengiriman"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:gravity="right"
-                    android:id="@+id/total_ongkir"
-                    android:text="Rp. 400.000"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/lll3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ll22"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:text="Total"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-                <TextView
-                    android:id="@+id/total_biaya"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:gravity="right"
-                    android:text="Rp. 1.400.000"
-                    android:textColor="@color/warning"
-                    android:textSize="@dimen/_14sdp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <TextView
-                android:id="@+id/lll4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/lll3"
-                android:layout_centerHorizontal="true"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:fontFamily="@font/popmed"
-                android:text="Silahkan lakukan pembayaran sesuai nominal."
-                android:textSize="@dimen/_7sdp" />
-        </RelativeLayout>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/firstlayout"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:orientation="vertical">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_gallery"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="PILIH BUKTI PEMBAYARAN"
-                android:textColor="#fff"
-                app:cornerRadius="@dimen/_5sdp" />
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_30sdp">
 
 
-            <ImageView
-                android:id="@+id/inp_gambar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btn_gallery"
-                android:layout_marginTop="10dp"
-                android:scaleType="centerCrop" />
+                <RelativeLayout
+                    android:id="@+id/firstlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_340sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@drawable/struktagihan"
+                    android:padding="@dimen/_16sdp"
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_simpan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/inp_gambar"
-                android:layout_marginTop="10dp"
-                android:background="#f0e8e8"
-                android:text="KIRIM BUKTI PEMBAYARAN"
-                android:textColor="#fff"
-                app:cornerRadius="@dimen/_5sdp" />
+                    >
+
+                    <TextView
+                        android:id="@+id/tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_40sdp"
+                        android:fontFamily="@font/popsem"
+                        android:text="Transfer ke Rekening"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <TextView
+                        android:id="@+id/tv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv1"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/popsem"
+                        android:text="089092389901123"
+                        android:textColor="@color/main2"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv2"
+                        android:layout_marginTop="@dimen/_70sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Nominal Pembelian"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:id="@+id/total_beli"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:gravity="right"
+                            android:text="Rp. 1.000.000"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll22"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ll1"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Biaya Pengiriman"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:id="@+id/total_ongkir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:gravity="right"
+                            android:text="Rp. 400.000"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_55sdp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_50sdp"
-            android:src="@drawable/warning" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/lll3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ll22"
+                        android:layout_marginTop="@dimen/_40sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Total"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:id="@+id/total_biaya"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:gravity="right"
+                            android:text="Rp. 1.400.000"
+                            android:textColor="@color/warning"
+                            android:textSize="@dimen/_14sdp" />
 
 
-    </RelativeLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <TextView
+                        android:id="@+id/lll4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lll3"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/popmed"
+                        android:text="Silahkan lakukan pembayaran sesuai nominal."
+                        android:textSize="@dimen/_7sdp" />
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/firstlayout"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_gallery"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="PILIH BUKTI PEMBAYARAN"
+                        android:textColor="#fff"
+                        app:cornerRadius="@dimen/_5sdp" />
+
+
+                    <ImageView
+                        android:id="@+id/inp_gambar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_gallery"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="centerCrop" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_simpan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/inp_gambar"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:background="#f0e8e8"
+                        android:text="KIRIM BUKTI PEMBAYARAN"
+                        android:textColor="#fff"
+                        app:cornerRadius="@dimen/_5sdp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_55sdp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:src="@drawable/warning" />
+
+
+            </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -669,5 +689,7 @@
             android:textSize="15dp" />
 
     </LinearLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

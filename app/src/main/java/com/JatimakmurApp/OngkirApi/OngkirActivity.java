@@ -70,6 +70,8 @@ public class OngkirActivity extends AppCompatActivity {
     private EditText searchList;
     private ListView mListView;
 
+    String kab, prov;
+
     RecyclerView rc_cart;
 
     private ProvinceAdapter adapter_province;
@@ -474,6 +476,9 @@ public class OngkirActivity extends AppCompatActivity {
 
                         tv_time.setText(response.body().getRajaongkir().getResults().get(0).getCosts().get(0).getCost().get(0).getEtd());
 
+                        kab = response.body().getRajaongkir().getDestinationDetails().getCityName();
+                        prov = response.body().getRajaongkir().getDestinationDetails().getProvince();
+
                     } else {
 
                         String message = response.body().getRajaongkir().getStatus().getDescription();
@@ -573,6 +578,9 @@ public class OngkirActivity extends AppCompatActivity {
                         params.put("kurir", spinnerCourier.getSelectedItem().toString().toLowerCase());
                         params.put("expedisi", tv_expedisi.getText().toString());
                         params.put("wkt_pengiriman", tv_time.getText().toString());
+
+                        params.put("kabupaten", kab);
+                        params.put("provinsi", prov);
 
                         double ongkir = Double.parseDouble(tv_coast.getText().toString().replace("Rp. ","").replace(",",""));
                         params.put("ongkir", Double.toString(ongkir));

@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +58,7 @@ public class StatusActivity extends AppCompatActivity {
     ProgressDialog pd;
     DecimalFormat decimalFormat;
     Bitmap bitmap;
+    RelativeLayout strukPembayaran, strukTagihan;
 
     String alamat, provinsi, kabupaten, expedisi;
 
@@ -89,6 +91,9 @@ public class StatusActivity extends AppCompatActivity {
         total2 = findViewById(R.id.total_biaya2);
         tv_expedisi = findViewById(R.id.tv_expedisi);
 
+        strukPembayaran =   findViewById(R.id.struk_pembayaran);
+        strukTagihan = findViewById(R.id.struk_tagihan);
+
         totalBeli = (TextView) findViewById(R.id.total_beli);
         totalOngkir = (TextView) findViewById(R.id.total_ongkir);
         total = (TextView) findViewById(R.id.total_biaya);
@@ -105,18 +110,6 @@ public class StatusActivity extends AppCompatActivity {
 
         loadJson();
 
-        Intent intent = getIntent();
-        this.alamat = intent.getStringExtra("alamat");
-        this.provinsi = intent.getStringExtra("provinsi");
-        this.kabupaten = intent.getStringExtra("kota");
-        this.expedisi = intent.getStringExtra("kurir");
-
-
-
-        tv_provinsi.setText(provinsi);
-        tv_kota.setText(kabupaten);
-        tv_alamatLengkap.setText(alamat);
-        tv_expedisi.setText(intent.getStringExtra("kurir"));
 
 
         btngallery.setOnClickListener(new View.OnClickListener() {
@@ -176,6 +169,11 @@ public class StatusActivity extends AppCompatActivity {
                     totalOngkir.setText("Rp. " + decimalFormat.format(data.getInt("ongkir")));
                     total.setText("Rp. " + decimalFormat.format(data.getInt("total_biaya")));
 
+                    tv_expedisi.setText(data.getString("kurir"));
+                    tv_alamatLengkap.setText(data.getString("tujuan"));
+                    tv_provinsi.setText(data.getString("provinsi"));
+                    tv_kota.setText(data.getString("kabupaten"));
+
                     totalBeli2.setText("Rp. " + decimalFormat.format(data.getInt("pembelian")));
                     totalOngkir2.setText("Rp. " + decimalFormat.format(data.getInt("ongkir")));
                     total2.setText("Rp. " + decimalFormat.format(data.getInt("total_biaya")));
@@ -183,20 +181,31 @@ public class StatusActivity extends AppCompatActivity {
                     if (data.getString("status").equalsIgnoreCase("Sudah dibayar")) {
                         status.setText("Sudah Dibayar");
 
-                        status.setTextColor(R.color.colorPrimary);
+                        strukPembayaran.setVisibility(View.VISIBLE);
+                        strukTagihan.setVisibility(View.GONE);
 
-                        imgStatus.setImageResource(R.drawable.berhasil);
 
-                        btngallery.setVisibility(View.GONE);
 
-                        btnsimpan.setVisibility(View.GONE);
 
-                        findViewById(R.id.rekening).setVisibility(View.GONE);
+
+//                        status.setTextColor(R.color.colorPrimary);
+//
+//                        imgStatus.setImageResource(R.drawable.berhasil);
+//
+//                        btngallery.setVisibility(View.GONE);
+//
+//                        btnsimpan.setVisibility(View.GONE);
+
+//                        findViewById(R.id.rekening).setVisibility(View.GONE);
                     } else if (data.getString("status").equalsIgnoreCase("Belum dibayar")) {
-                        status.setText("BelumDibayar");
-                        status.setTextColor(Color.RED);
 
-                        imgStatus.setImageResource(R.drawable.gagal);
+                        strukTagihan.setVisibility(View.VISIBLE);
+                        strukPembayaran.setVisibility(View.GONE);
+
+//                        status.setText("BelumDibayar");
+//                        status.setTextColor(Color.RED);
+//
+//                        imgStatus.setImageResource(R.drawable.gagal);
 
 //                        btncetak.setVisibility(View.GONE);
                     }
@@ -314,7 +323,11 @@ public class StatusActivity extends AppCompatActivity {
                 }
             }
         }
+
+    public void back(View view) {
+        finish();
     }
+}
 
 
 

@@ -51,11 +51,14 @@ import static com.JatimakmurApp.Util.ServerAPI.DOWNLOAD_NOTA;
 public class StatusActivity extends AppCompatActivity {
 
     TextView status, tanggal, nota, username, total, totalBeli, totalOngkir;
+    TextView tv_provinsi, tv_kota,tv_alamatLengkap, tv_expedisi, total2, totalBeli2, totalOngkir2;
     ImageView imgStatus, gambar;
     Button btnsimpan, btncetak, btngallery;
     ProgressDialog pd;
     DecimalFormat decimalFormat;
     Bitmap bitmap;
+
+    String alamat, provinsi, kabupaten, expedisi;
 
     GalleryPhoto mGalery;
     private final int TAG_GALLERY = 2222;
@@ -71,10 +74,20 @@ public class StatusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
 
+        hideNavigationBar();
+
         status = (TextView) findViewById(R.id.text_status);
         tanggal = (TextView) findViewById(R.id.tanggal);
         nota = (TextView) findViewById(R.id.no_nota);
         username = (TextView) findViewById(R.id.user);
+
+        tv_provinsi = findViewById(R.id.tv_provinsi);
+        tv_kota =  findViewById(R.id.tv_kabupaten);
+        tv_alamatLengkap = findViewById(R.id.tv_alamat);
+        totalBeli2 = findViewById(R.id.total_beli2);
+        totalOngkir2 = findViewById(R.id.total_ongkir2);
+        total2 = findViewById(R.id.total_biaya2);
+        tv_expedisi = findViewById(R.id.tv_expedisi);
 
         totalBeli = (TextView) findViewById(R.id.total_beli);
         totalOngkir = (TextView) findViewById(R.id.total_ongkir);
@@ -88,7 +101,23 @@ public class StatusActivity extends AppCompatActivity {
         decimalFormat = new DecimalFormat("#,##0.00");
         pd = new ProgressDialog(StatusActivity.this);
         mGalery = new GalleryPhoto(getApplicationContext());
+
+
         loadJson();
+
+        Intent intent = getIntent();
+        this.alamat = intent.getStringExtra("alamat");
+        this.provinsi = intent.getStringExtra("provinsi");
+        this.kabupaten = intent.getStringExtra("kota");
+        this.expedisi = intent.getStringExtra("kurir");
+
+
+
+        tv_provinsi.setText(provinsi);
+        tv_kota.setText(kabupaten);
+        tv_alamatLengkap.setText(alamat);
+        tv_expedisi.setText(intent.getStringExtra("kurir"));
+
 
         btngallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +149,12 @@ public class StatusActivity extends AppCompatActivity {
         });
     }
 
+    private void hideNavigationBar() {
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
+    }
 
 
     private void loadJson() {
@@ -140,6 +175,11 @@ public class StatusActivity extends AppCompatActivity {
                     totalBeli.setText("Rp. " + decimalFormat.format(data.getInt("pembelian")));
                     totalOngkir.setText("Rp. " + decimalFormat.format(data.getInt("ongkir")));
                     total.setText("Rp. " + decimalFormat.format(data.getInt("total_biaya")));
+
+                    totalBeli2.setText("Rp. " + decimalFormat.format(data.getInt("pembelian")));
+                    totalOngkir2.setText("Rp. " + decimalFormat.format(data.getInt("ongkir")));
+                    total2.setText("Rp. " + decimalFormat.format(data.getInt("total_biaya")));
+
                     if (data.getString("status").equalsIgnoreCase("Sudah dibayar")) {
                         status.setText("Sudah Dibayar");
 
@@ -158,7 +198,7 @@ public class StatusActivity extends AppCompatActivity {
 
                         imgStatus.setImageResource(R.drawable.gagal);
 
-                        btncetak.setVisibility(View.GONE);
+//                        btncetak.setVisibility(View.GONE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -536,7 +536,14 @@ public class OngkirActivity extends AppCompatActivity {
                                     }
                                     MainActivity.txtTot.setText("Rp. 0");
                                     Intent intent = new Intent(OngkirActivity.this, StatusActivity.class);
+
+                                    // Mengirim data menggunakan intent
                                     intent.putExtra("no_nota", res.getString("no_nota") );
+                                    intent.putExtra("provinsi", etToProvince.getText().toString());
+                                    intent.putExtra("kota", etToCity.getText().toString());
+                                    intent.putExtra("alamat", etAlamat.getText().toString());
+                                    intent.putExtra("kurir", spinnerCourier.getSelectedItem().toString());
+
                                     startActivity(intent);
                                     finish();
                                 } catch (JSONException e) {

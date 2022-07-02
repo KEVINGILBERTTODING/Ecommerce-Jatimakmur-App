@@ -27,7 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.jatimakmur"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".MyMap"
+            android:exported="false" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -59,11 +61,16 @@
             android:theme="@style/Theme.LoginScreen" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.jatimakmur" />
+            android:theme="@style/Theme.main" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -375,13 +375,9 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         btnLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri gmmIntentUri = Uri.parse("geo: -6.269427,106.9119?q=-6.269427,106.9119");
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(mapIntent);
+               startActivity(new Intent(MainActivity.this, MyMap.class));
                 }
-            }
+
         });
 
         btnChat.setOnClickListener(new View.OnClickListener() {

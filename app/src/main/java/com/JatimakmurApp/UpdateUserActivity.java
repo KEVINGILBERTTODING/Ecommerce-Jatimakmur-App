@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -49,6 +50,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
@@ -127,6 +129,10 @@ public class UpdateUserActivity extends  AppCompatActivity {
                 );
             }
         });
+
+        Glide.with(this).load(ServerAPI.URL_IMAGE + "profile" + kode_konsumen + ".png").
+                into(iv_gambar);
+
 
 
 
@@ -241,6 +247,11 @@ public class UpdateUserActivity extends  AppCompatActivity {
         pd.setMessage("Memperbarui Data Profil");
         pd.setCancelable(false);
         pd.show();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        final String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
         StringRequest strReq = new
                 StringRequest(Request.Method.POST, ServerAPI.URL_UPDATE_USER_PROFILE,
                         new Response.Listener<String>() {
@@ -274,6 +285,7 @@ public class UpdateUserActivity extends  AppCompatActivity {
                         params.put("kota", ti_kota.getText().toString());
                         params.put("no_hp", ti_hp.getText().toString());
                         params.put("email", ti_email.getText().toString());
+                        params.put("photo", imageString);
                         return params;
                     }
                 };
@@ -401,6 +413,8 @@ public class UpdateUserActivity extends  AppCompatActivity {
         });
         alertDialog.show();
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

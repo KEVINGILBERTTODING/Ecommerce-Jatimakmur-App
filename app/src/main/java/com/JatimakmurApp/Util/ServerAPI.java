@@ -14,6 +14,7 @@ public class ServerAPI {
     public static final String URL_UPLOAD_GAMBAR = URL + "API/penjualan/upload_bukti.php";
     public static final String DOWNLOAD_NOTA = URL + "index.php/nota/";
     public static final String URL_HISTORY =  URL + "API/show_history.php";
+    public static final String URL_IMAGE =  URL + "uploads/photo_profile/";
 
     public static final String URL_BUAH =  URL + "API/produk/buah.php";
     public static final String URL_SAYUR =  URL + "API/produk/sayur.php";

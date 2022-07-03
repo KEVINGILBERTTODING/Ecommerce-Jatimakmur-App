@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -69,6 +70,7 @@ public class OngkirActivity extends AppCompatActivity {
     private AlertDialog ad;
     private EditText searchList;
     private ListView mListView;
+    private ImageButton btn_back;
 
     String kab, prov;
 
@@ -100,6 +102,7 @@ public class OngkirActivity extends AppCompatActivity {
         tv_expedisi = (TextView) findViewById(R.id.tv_expedisi);
         tv_coast = (TextView) findViewById(R.id.tv_coast);
         tv_time = (TextView) findViewById(R.id.tv_time);
+        btn_back=   (ImageButton) findViewById(R.id.btn_back);
 
         //menampilkan total harga
         int tot=0;
@@ -116,6 +119,12 @@ public class OngkirActivity extends AppCompatActivity {
         rc_cart.setLayoutManager(new LinearLayoutManager(this));
         CartAdapter cartAdapter = new CartAdapter(cart);
         rc_cart.setAdapter(cartAdapter);
+
+        btn_back.setOnClickListener(view -> {
+            Intent intent = new Intent(OngkirActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         etToProvince.setOnClickListener(new View.OnClickListener() {
             @Override

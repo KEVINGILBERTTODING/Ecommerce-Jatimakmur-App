@@ -11,30 +11,30 @@
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/rt1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:id="@+id/rt1"
         android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_20sdp"
-        >
+        android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/btn_back"
             android:layout_width="@dimen/_20sdp"
-            android:background="@drawable/backbtn"
+            android:layout_height="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_16sdp"
-            android:layout_height="@dimen/_20sdp"/>
+            android:background="@drawable/ic_kembali" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/popsem"
-            android:textSize="@dimen/_12sdp"
-            android:textColor="@color/white"
             android:layout_marginTop="@dimen/_2sdp"
+            android:fontFamily="@font/popsem"
+            android:text="Pilih alamat"
+            android:textColor="@color/white"
 
-            android:text="Pilih alamat"/>
+            android:textSize="@dimen/_12sdp" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

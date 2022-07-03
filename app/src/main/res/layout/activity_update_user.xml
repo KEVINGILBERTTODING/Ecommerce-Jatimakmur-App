@@ -9,10 +9,18 @@
     android:orientation="vertical"
     tools:context=".UpdateUserActivity">
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:background="@drawable/header1"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_16sdp"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,6 +33,8 @@
                 android:text="Update Data Diri"
                 android:src="@color/cardview_dark_background"
                 android:scaleType="centerCrop"/>
+
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"

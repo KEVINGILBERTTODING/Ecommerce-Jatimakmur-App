@@ -786,7 +786,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_profile:
-                startActivity(new Intent(MainActivity.this,UpdateUserActivity.class));
+                startActivity(new Intent(MainActivity.this, UpdateUserLogin.class));
                 return true;
             case R.id.action_history:
                 startActivity(new Intent(MainActivity.this,HistoryActivity.class));
@@ -801,12 +801,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number,null)));
                 return true;
             case R.id.action_maps:
-                Uri gmmIntentUri = Uri.parse("geo:-7.079667,110.329499?q=-7.079667,110.329499");
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(mapIntent);
-                }
+               startActivity(new Intent(MainActivity.this,MyMap.class));
                 return true;
             case R.id.action_logout:
                 SharedPreferences.Editor editor = sharedpreferences.edit();

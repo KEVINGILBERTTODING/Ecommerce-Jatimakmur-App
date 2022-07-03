@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_2sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+<androidx.cardview.widget.CardView
+
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_30sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_5sdp"
+    app:cardCornerRadius="@dimen/_5sdp"
     android:layout_marginVertical="2dp">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="3dp">
+        android:layout_height="match_parent">
         <RelativeLayout
             android:id="@+id/rl1"
             android:layout_width="wrap_content"
@@ -18,18 +29,24 @@
                 android:id="@+id/tv_cart_nama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_8sdp"
                 android:ellipsize="middle"
+                android:fontFamily="@font/popsem"
                 android:maxWidth="250dp"
                 android:text="Nama Produk"
-                android:textSize="16dp"
+                android:textColor="@color/font_ongkir"
+                android:textSize="@dimen/_8sdp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tv_cart_harga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_cart_nama"
-                android:text="Nama Produk"
-                android:textSize="14dp"/>
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:fontFamily="@font/popmed"
+                android:text="Harga"
+                android:textSize="@dimen/_7sdp" />
         </RelativeLayout>
 
         <TextView
@@ -39,10 +56,18 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginHorizontal="5dp"
-            android:text="Nama Produk"
-            android:textSize="18dp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:fontFamily="@font/popsem"
+            android:text="Total"
+            android:textSize="@dimen/_9sdp"
             android:textStyle="bold" />
 
+        <View
+            android:layout_width="@dimen/_3sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:background="@color/main"
+            />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
+</androidx.appcompat.widget.LinearLayoutCompat>

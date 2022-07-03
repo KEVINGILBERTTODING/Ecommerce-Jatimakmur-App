@@ -17,10 +17,13 @@
     <color name="btLight">#f7f7f7</color>
     <color name="main">#69D3C7</color>
     <color name="main2">#55B5A9</color>
-    <color name="white">#FFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="card">#FFC069</color>
     <color name="blue">#4186FF</color>
     <color name="warning">#D33838</color>
+
+    <color name="font_ongkir">#55B5A9</color>
+
 
 
 

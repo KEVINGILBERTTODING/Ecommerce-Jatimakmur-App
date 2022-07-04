@@ -173,6 +173,16 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         bottomBarListener();
 
 
+        //fungsi saat photo profile di klik
+        imgProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, UpdateUserActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void recyclerCart() {
@@ -910,6 +920,8 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
         }
 
+
+
         // Jika login menggunakan facebook account
 
         if(AccessToken.getCurrentAccessToken()!=null){
@@ -953,7 +965,9 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
 
         if(username!=null){
             tv_Username.setText("Hai, " + username);
-            imgProfile.setVisibility(View.GONE);
+            Glide.with(this)
+                    .load(ServerAPI.URL_IMAGE  + username + ".png")
+                    .into(imgProfile);
 
 
         }

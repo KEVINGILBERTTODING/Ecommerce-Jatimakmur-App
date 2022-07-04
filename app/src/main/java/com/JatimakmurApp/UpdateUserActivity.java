@@ -130,7 +130,7 @@ public class UpdateUserActivity extends  AppCompatActivity {
             }
         });
 
-        Glide.with(this).load(ServerAPI.URL_IMAGE + "profile" + kode_konsumen + ".png").
+        Glide.with(this).load(ServerAPI.URL_IMAGE + username + ".png").
                 into(iv_gambar);
 
 
@@ -248,7 +248,7 @@ public class UpdateUserActivity extends  AppCompatActivity {
         pd.setCancelable(false);
         pd.show();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         final String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
@@ -285,6 +285,7 @@ public class UpdateUserActivity extends  AppCompatActivity {
                         params.put("kota", ti_kota.getText().toString());
                         params.put("no_hp", ti_hp.getText().toString());
                         params.put("email", ti_email.getText().toString());
+                        params.put("username", username);
                         params.put("photo", imageString);
                         return params;
                     }

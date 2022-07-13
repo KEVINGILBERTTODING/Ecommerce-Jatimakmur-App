@@ -15,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:orientation="horizontal">
 
         <ImageButton
@@ -40,356 +39,350 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rt1"
+        android:background="@drawable/container_ongkir"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:padding="20dp">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/container_ongkir"
-            android:orientation="vertical"
-            android:layout_below="@id/rt1"
-            android:padding="20dp">
+            android:layout_height="wrap_content">
 
-            <androidx.core.widget.NestedScrollView
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/popsem"
-                android:text="Detail Pesanan"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_11sdp" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:cardCornerRadius="@dimen/_10sdp"
-                app:cardUseCompatPadding="true">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rc_cart2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_8sdp" />
-            </androidx.cardview.widget.CardView>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:text="Total : "
-                    android:textSize="@dimen/_8sdp" />
-
-                <TextView
-                    android:id="@+id/totalHarga2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:textColor="@color/font_ongkir"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="bold"
-                    tools:text="Rp. 10.000" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/popsem"
-                android:text="Alamat Pengiriman"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_11sdp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:orientation="vertical"
-                android:padding="@dimen/_2sdp">
+                android:orientation="vertical">
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/popmed"
-                    android:text="Provinsi : "
-                    android:textSize="@dimen/_9sdp" />
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/popsem"
+                    android:text="Detail Pesanan"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_11sdp" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardUseCompatPadding="true"
-
-
-                    >
-
-                    <EditText
-                        android:id="@+id/etToProvince"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:focusable="false"
-                        android:fontFamily="@font/popmed"
-                        android:hint="Pilih Provinsi"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_gravity="center"
-                        android:textColor="@color/font_ongkir"
-                        android:textColorHint="@color/font_ongkir"
-                        android:textSize="@dimen/_8sdp" />
-
-                    <View
-                        android:layout_width="@dimen/_5sdp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/main2"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/popmed"
-                    android:text="Kota/Kabupaten :"
-                    android:textSize="@dimen/_9sdp" />
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
                     app:cardUseCompatPadding="true">
 
-                    <EditText
-                        android:id="@+id/etToCity"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rc_cart2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:focusable="false"
-                        android:fontFamily="@font/popmed"
-                        android:hint="Pilih Kota/Kabupaten"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:textColor="@color/font_ongkir"
-                        android:textColorHint="@color/font_ongkir"
+                        android:padding="@dimen/_8sdp" />
+                </androidx.cardview.widget.CardView>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/popsem"
+                        android:text="Total : "
                         android:textSize="@dimen/_8sdp" />
 
-                    <View
-                        android:layout_width="@dimen/_5sdp"
-                        android:layout_height="@dimen/_50sdp"
-                        android:background="@color/main2"/>
+                    <TextView
+                        android:id="@+id/totalHarga2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/popsem"
+                        android:textColor="@color/font_ongkir"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold"
+                        tools:text="Rp. 10.000" />
 
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/popsem"
+                    android:text="Alamat Pengiriman"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_2sdp">
+
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/popmed"
-                        android:text="Alamat lengkap"
+                        android:text="Provinsi : "
                         android:textSize="@dimen/_9sdp" />
 
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_8sdp"
-                app:cardUseCompatPadding="true">
-
-
-
-
-                <EditText
-                    android:id="@+id/etAlamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_120sdp"
-                    android:fontFamily="@font/popmed"
-                    android:gravity="top|left"
-                    android:background="@android:color/transparent"
-                    android:inputType="textMultiLine"
-                    android:minLines="2"
-                    android:padding="@dimen/_5sdp"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:hint="Contoh : Jl. Raya No. 1, RT.1/RW.1, Kec. Cimanggu, Kota Bandung, Jawa Barat 40265"
-                    android:textSize="@dimen/_8sdp" />
-
-                <View
-                    android:layout_width="@dimen/_4sdp"
-                    android:layout_height="@dimen/_120sdp"
-                    android:background="@color/main2"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Expedisi"
-                android:fontFamily="@font/popsem"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_10sdp" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <Spinner
-                    android:id="@+id/spinnerCourier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:dropDownWidth="match_parent"
-                    android:spinnerMode="dropdown" />
-            </LinearLayout>
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="@dimen/_8sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        app:cardCornerRadius="@dimen/_5sdp"
+                        app:cardUseCompatPadding="true"
+
+
                         >
 
+                        <EditText
+                            android:id="@+id/etToProvince"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:background="@android:color/transparent"
+                            android:focusable="false"
+                            android:fontFamily="@font/popmed"
+                            android:hint="Pilih Provinsi"
+                            android:textColor="@color/font_ongkir"
+                            android:textColorHint="@color/font_ongkir"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <View
+                            android:layout_width="@dimen/_5sdp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/main2" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/popmed"
+                        android:text="Kota/Kabupaten :"
+                        android:textSize="@dimen/_9sdp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        app:cardCornerRadius="@dimen/_5sdp"
+                        app:cardUseCompatPadding="true">
+
+                        <EditText
+                            android:id="@+id/etToCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:background="@android:color/transparent"
+                            android:focusable="false"
+                            android:fontFamily="@font/popmed"
+                            android:hint="Pilih Kota/Kabupaten"
+                            android:textColor="@color/font_ongkir"
+                            android:textColorHint="@color/font_ongkir"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <View
+                            android:layout_width="@dimen/_5sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:background="@color/main2" />
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/popmed"
+                    android:text="Alamat lengkap"
+                    android:textSize="@dimen/_9sdp" />
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_8sdp"
+                    app:cardUseCompatPadding="true">
 
+
+                    <EditText
+                        android:id="@+id/etAlamat"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/popmed"
+                        android:gravity="top|left"
+                        android:hint="Contoh : Jl. Raya No. 1, RT.1/RW.1, Kec. Cimanggu, Kota Bandung, Jawa Barat 40265"
+                        android:inputType="textMultiLine"
+                        android:minLines="2"
+                        android:padding="@dimen/_5sdp"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <View
+                        android:layout_width="@dimen/_4sdp"
+                        android:layout_height="@dimen/_120sdp"
+                        android:background="@color/main2" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/popsem"
+                    android:text="Expedisi"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_10sdp" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <Spinner
+                        android:id="@+id/spinnerCourier"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Asal Pengiriman"
-                        android:textColor="@android:color/black" />
-
-                    <TextView
-                        android:id="@+id/tv_origin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="-"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Tujuan"
-                        android:textColor="@android:color/black" />
-
-                    <TextView
-                        android:id="@+id/tv_destination"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="-"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Expedisi"
-                        android:textColor="@android:color/black" />
-
-                    <TextView
-                        android:id="@+id/tv_expedisi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="-"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Perkiraan Waktu Pengiriman (Hari)"
-                        android:textColor="@android:color/black" />
-
-                    <TextView
-                        android:id="@+id/tv_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="-"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Biaya Pengiriman (Rp)"
-                        android:textColor="@android:color/black" />
-
-                    <TextView
-                        android:id="@+id/tv_coast"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="-"
-                        android:textSize="12sp" />
-
+                        android:dropDownWidth="match_parent"
+                        android:spinnerMode="dropdown" />
                 </LinearLayout>
 
-
-            </LinearLayout>
-
-                        <View
-                            android:layout_width="@dimen/_4sdp"
-                            android:layout_height="@dimen/_225sdp"
-                            android:background="@color/main2"/>
-                    </androidx.cardview.widget.CardView>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnProcess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/shape_rectangle_primary"
-                android:text="Lanjut Pembayaran"
-                android:textAllCaps="false"
-                app:cornerRadius="@dimen/_10sdp"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/_11sdp" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    app:cardCornerRadius="@dimen/_8sdp">
 
 
-            </androidx.core.widget.NestedScrollView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
 
-        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Asal Pengiriman"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_origin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="-"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Tujuan"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_destination"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="-"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Expedisi"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_expedisi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="-"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Perkiraan Waktu Pengiriman (Hari)"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="-"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Biaya Pengiriman (Rp)"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_coast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="-"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/_4sdp"
+                        android:layout_height="@dimen/_225sdp"
+                        android:background="@color/main2" />
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnProcess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/shape_rectangle_primary"
+                    android:text="Lanjut Pembayaran"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:cornerRadius="@dimen/_10sdp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
 
 
 

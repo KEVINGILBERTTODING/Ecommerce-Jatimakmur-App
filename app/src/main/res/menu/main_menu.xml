@@ -9,7 +9,7 @@
         android:orderInCategory="100"
         app:showAsAction="never" />
     <item android:id="@+id/action_profile"
-        android:title="Update Profil"
+        android:title="Update Password"
         android:orderInCategory="200"
         app:showAsAction="never" />
     <item android:id="@+id/action_call_center"

@@ -8,24 +8,45 @@
     tools:context=".UpdateUserLogin">
 
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:background="@drawable/header_update_password"
+            />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_centerInParent="true"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            android:src="@drawable/_update_passsword"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
             android:fontFamily="@font/popsem"
-            android:text="Update\nPassword"
+            android:text="Reset Password"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/_50sdp"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="@dimen/_18sdp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtlayout_username"
@@ -77,18 +98,18 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnUpdate"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:fontFamily="@font/popsem"
             android:text="Update"
             android:textAllCaps="false"
-            android:textSize="20sp"
+            android:textSize="@dimen/_12sdp"
             app:cornerRadius="20dp" />
 
     </LinearLayout>
 
+        </RelativeLayout>
 
-
-
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

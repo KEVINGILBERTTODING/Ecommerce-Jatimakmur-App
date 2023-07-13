@@ -12,7 +12,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_170sdp"
+        android:layout_height="wrap_content"
         android:background="@drawable/coantainer_struk"
 
         />
@@ -76,343 +76,354 @@
 
             >
 
-            <TextView
-                android:id="@+id/tvs01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:fontFamily="@font/popsem"
-                android:text="Transaksi Berhasil"
-                android:textColor="@color/main2"
-                android:textSize="@dimen/_13sdp" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s11"
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvs01"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:text="Tanggal"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-                <TextView
-                    android:id="@+id/tanggal"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:gravity="right"
-                    android:text="29-06-2022 6:14"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvs01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:fontFamily="@font/popsem"
+                        android:text="Transaksi Berhasil"
+                        android:textColor="@color/main2"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvs01"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Tanggal"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:id="@+id/tanggal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:gravity="right"
+                            android:text="29-06-2022 6:14"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s22"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s11"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s22"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s11"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:text="No Referensi"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="No Referensi"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
-                <TextView
-                    android:id="@+id/no_nota"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:gravity="right"
-                    android:text="N-90578308102"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:id="@+id/no_nota"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:gravity="right"
+                            android:text="N-90578308102"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s33"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s22"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:orientation="horizontal">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s33"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s22"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popmed"
-                    android:text="Nama Konsumen"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popmed"
+                            android:text="Nama Konsumen"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
-                <TextView
-                    android:id="@+id/user"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popbold"
-                    android:gravity="right"
-                    android:text="Kevin Gilbert Toding"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s44"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s33"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:text="Alamat Pengiriman"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s90"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s44"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popmed"
-                    android:text="Expedisi"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-                <TextView
-                    android:id="@+id/tv_expedisi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popmed"
-                    android:gravity="right"
-                    android:text="JNE"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                        <TextView
+                            android:id="@+id/user"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popbold"
+                            android:gravity="right"
+                            android:text="Kevin Gilbert Toding"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s55"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s90"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <TextView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popmed"
-                    android:text="Provinsi"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s44"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s33"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_provinsi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popmed"
-                    android:gravity="right"
-                    android:text="Sulawesi Selatan"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Alamat Pengiriman"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s66"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s55"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s90"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s44"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popmed"
-                    android:text="Kabupaten"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popmed"
+                            android:text="Expedisi"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
-                <TextView
-                    android:id="@+id/tv_kabupaten"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popmed"
-                    android:gravity="right"
-                    android:text="Toraja Utara"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:id="@+id/tv_expedisi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popmed"
+                            android:gravity="right"
+                            android:text="JNE"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s77"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s66"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popmed"
-                    android:text="Alamat"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-                <TextView
-                    android:id="@+id/tv_alamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popmed"
-                    android:gravity="right"
-                    android:text="Jl. Pahlawan No.16 Rantepao"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s88"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s77"
-                android:layout_marginTop="@dimen/_50sdp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:text="Nominal Pembelian"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
-
-                <TextView
-                    android:id="@+id/total_beli2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:gravity="right"
-                    android:text="Rp. 1.000.000"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s55"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s90"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s99"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s88"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popmed"
+                            android:text="Provinsi"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
-                <TextView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:text="Biaya Pengiriman"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:id="@+id/tv_provinsi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popmed"
+                            android:gravity="right"
+                            android:text="Sulawesi Selatan"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
-                <TextView
-                    android:id="@+id/total_ongkir2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:gravity="right"
-                    android:text="Rp. 400.000"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s66"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s55"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popmed"
+                            android:text="Kabupaten"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_kabupaten"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popmed"
+                            android:gravity="right"
+                            android:text="Toraja Utara"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s77"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s66"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popmed"
+                            android:text="Alamat"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_alamat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popmed"
+                            android:gravity="right"
+                            android:text="Jl. Pahlawan No.16 Rantepao"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s88"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s77"
+                        android:layout_marginTop="@dimen/_50sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Nominal Pembelian"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:id="@+id/total_beli2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:gravity="right"
+                            android:text="Rp. 1.000.000"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/s10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s99"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:orientation="horizontal">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s99"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s88"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:text="Total"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Biaya Pengiriman"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
-                <TextView
-                    android:id="@+id/total_biaya2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/popsem"
-                    android:gravity="right"
-                    android:text="Rp. 1.400.000"
-                    android:textColor="@color/main2"
-                    android:textSize="@dimen/_14sdp" />
+                        <TextView
+                            android:id="@+id/total_ongkir2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:gravity="right"
+                            android:text="Rp. 400.000"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <TextView
-                android:id="@+id/s12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s10"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/popmed"
-                android:text="Terima kasih telah berbelanja di Toko Kami."
-                android:textColor="@color/main2"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:textSize="@dimen/_7sdp" />
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/s10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s99"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:orientation="horizontal">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_cetak"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/s12"
-                android:layout_alignParentBottom="true"
-                android:background="#f0e8e8"
-                android:text="Download nota"
-                android:textColor="#fff"
-                app:cornerRadius="@dimen/_5sdp" />
+                        <TextView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:text="Total"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <TextView
+                            android:id="@+id/total_biaya2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/popsem"
+                            android:gravity="right"
+                            android:text="Rp. 1.400.000"
+                            android:textColor="@color/main2"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <TextView
+                        android:id="@+id/s12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s10"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/popmed"
+                        android:text="Terima kasih telah berbelanja di Toko Kami."
+                        android:textColor="@color/main2"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textSize="@dimen/_7sdp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_cetak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/s12"
+                        android:background="#f0e8e8"
+                        android:text="Download nota"
+                        android:textColor="#fff"
+                        app:cornerRadius="@dimen/_5sdp" />
+                </RelativeLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+
 
 
         </RelativeLayout>
@@ -421,7 +432,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_55sdp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:src="@drawable/success" />
 
 

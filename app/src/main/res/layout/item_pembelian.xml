@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginVertical="5dp"
+    app:cardCornerRadius="@dimen/_10sdp"
     android:layout_marginHorizontal="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
             <TextView
             android:id="@+id/a"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/popmed"
             android:layout_height="wrap_content"
             android:text="due date : "
             android:textSize="12sp"/>
@@ -25,18 +27,25 @@
                 android:layout_toEndOf="@+id/a"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/popmed"
                 android:text="12-08-2000"
                 android:textSize="12dp"
                 android:textStyle="bold"/>
+
             <TextView
                 android:id="@+id/tv_biayaBeli"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/a"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/popsem"
+                android:textColor="@color/main"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="Rp. 200,000"
-                android:textSize="18dp"
-                android:textStyle="bold"/>
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -47,8 +56,9 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginHorizontal="5dp"
-            android:text="Nama Produk"
-            android:textSize="18dp"
+            android:text="status"
+            android:fontFamily="@font/popmed"
+            android:textSize="@dimen/_10sdp"
             android:textStyle="bold" />
 
 

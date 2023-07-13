@@ -46,7 +46,7 @@ tools:context=".RegisterActivity">
         android:fontFamily="@font/popmed"
         android:text="Buat akun dan bergabunglah dengan kami?"
         android:textColor="@color/black"
-        android:textSize="@dimen/_8sdp" />
+        android:textSize="@dimen/_9sdp" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -75,7 +75,7 @@ tools:context=".RegisterActivity">
             android:layout_height="wrap_content"
             android:fontFamily="@font/popmed"
             android:textColor="@color/black"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_11sdp"
             android:hint="Email">
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -101,7 +101,7 @@ tools:context=".RegisterActivity">
             android:fontFamily="@font/popmed"
             android:hint="Nama Pengguna"
             android:textColor="@color/black"
-            android:textSize="@dimen/_9sdp"></com.google.android.material.textfield.TextInputEditText>
+            android:textSize="@dimen/_11sdp"></com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -127,7 +127,9 @@ tools:context=".RegisterActivity">
             android:hint="Kata Sandi"
             android:inputType="textPassword"
             android:textColor="@color/black"
-            android:textSize="@dimen/_9sdp"></com.google.android.material.textfield.TextInputEditText>
+            android:textSize="@dimen/_11sdp">
+
+        </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,7 +156,7 @@ tools:context=".RegisterActivity">
             android:hint="Konfirmasi Kata Sandi"
             android:inputType="textPassword"
             android:textColor="@color/black"
-            android:textSize="@dimen/_9sdp"></com.google.android.material.textfield.TextInputEditText>
+            android:textSize="@dimen/_11sdp"></com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 

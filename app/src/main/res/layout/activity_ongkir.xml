@@ -93,7 +93,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/popsem"
                         android:text="Total : "
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_11sdp" />
 
                     <TextView
                         android:id="@+id/totalHarga2"
@@ -101,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/popsem"
                         android:textColor="@color/font_ongkir"
-                        android:textSize="@dimen/_10sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold"
                         tools:text="Rp. 10.000" />
 
@@ -137,8 +137,6 @@
                         android:layout_height="@dimen/_40sdp"
                         app:cardCornerRadius="@dimen/_5sdp"
                         app:cardUseCompatPadding="true"
-
-
                         >
 
                         <EditText
@@ -153,7 +151,7 @@
                             android:hint="Pilih Provinsi"
                             android:textColor="@color/font_ongkir"
                             android:textColorHint="@color/font_ongkir"
-                            android:textSize="@dimen/_8sdp" />
+                            android:textSize="@dimen/_11sdp" />
 
                         <View
                             android:layout_width="@dimen/_5sdp"
@@ -188,7 +186,7 @@
                             android:hint="Pilih Kota/Kabupaten"
                             android:textColor="@color/font_ongkir"
                             android:textColorHint="@color/font_ongkir"
-                            android:textSize="@dimen/_8sdp" />
+                            android:textSize="@dimen/_11sdp" />
 
                         <View
                             android:layout_width="@dimen/_5sdp"
@@ -226,7 +224,7 @@
                         android:inputType="textMultiLine"
                         android:minLines="2"
                         android:padding="@dimen/_5sdp"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_11sdp" />
 
                     <View
                         android:layout_width="@dimen/_4sdp"

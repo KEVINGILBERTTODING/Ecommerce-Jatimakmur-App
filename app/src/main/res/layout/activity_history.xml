@@ -7,10 +7,22 @@
     tools:context=".HistoryActivity"
     android:paddingHorizontal="10dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/popsem"
+        android:textColor="@color/main"
+        android:id="@+id/tvTitle"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Riwayat Pemesanan"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_pembelian"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_below="@+id/tvTitle"
         tools:listitem="@layout/item_pembelian"/>
 
     <nl.joery.animatedbottombar.AnimatedBottomBar

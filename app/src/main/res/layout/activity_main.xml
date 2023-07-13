@@ -42,7 +42,7 @@
                             android:fontFamily="@font/popmed"
                             android:text="Halo, Kevin Toding!"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_8sdp" />
+                            android:textSize="@dimen/_10sdp" />
 
 
                         <ImageView
@@ -61,7 +61,7 @@
                         android:fontFamily="@font/popsem"
                         android:text="Belanja kebutuhan apa hari ini?"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_10sdp" />
+                        android:textSize="@dimen/_11sdp" />
 
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/profile_image"
@@ -183,15 +183,15 @@
                                     android:orientation="horizontal">
 
                                     <LinearLayout
-                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_width="@dimen/_50sdp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="@dimen/_10sdp"
                                         android:orientation="vertical">
 
                                         <ImageButton
                                             android:id="@+id/btnBuah"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="@dimen/_25sdp"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
                                             android:background="@drawable/m_buah" />
 
                                         <TextView
@@ -203,20 +203,20 @@
                                             android:text="Buah"
                                             android:textAlignment="center"
                                             android:textColor="@color/black"
-                                            android:textSize="@dimen/_6sdp" />
+                                            android:textSize="@dimen/_9sdp" />
 
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_width="@dimen/_50sdp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="@dimen/_10sdp"
                                         android:orientation="vertical">
 
                                         <ImageButton
                                             android:id="@+id/btnDaging"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="@dimen/_25sdp"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
                                             android:background="@drawable/m_daging" />
 
                                         <TextView
@@ -228,20 +228,20 @@
                                             android:gravity="center_horizontal"
                                             android:text="Daging"
                                             android:textColor="@color/black"
-                                            android:textSize="@dimen/_6sdp" />
+                                            android:textSize="@dimen/_9sdp" />
 
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_width="@dimen/_50sdp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="@dimen/_10sdp"
                                         android:orientation="vertical">
 
                                         <ImageButton
                                             android:id="@+id/btnSayur"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="@dimen/_25sdp"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
                                             android:background="@drawable/m_sayur" />
 
                                         <TextView
@@ -252,20 +252,20 @@
                                             android:fontFamily="@font/popmed"
                                             android:text="Sayur"
                                             android:textColor="@color/black"
-                                            android:textSize="@dimen/_6sdp" />
+                                            android:textSize="@dimen/_9sdp" />
 
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_width="@dimen/_50sdp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="@dimen/_10sdp"
                                         android:orientation="vertical">
 
                                         <ImageButton
                                             android:id="@+id/btnSusu"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="@dimen/_25sdp"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
                                             android:background="@drawable/m_susu" />
 
                                         <TextView
@@ -276,20 +276,20 @@
                                             android:fontFamily="@font/popsem"
                                             android:text="Susu"
                                             android:textColor="@color/black"
-                                            android:textSize="@dimen/_6sdp" />
+                                            android:textSize="@dimen/_9sdp" />
 
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_width="@dimen/_50sdp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="@dimen/_10sdp"
                                         android:orientation="vertical">
 
                                         <ImageButton
                                             android:id="@+id/btnTelur"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="@dimen/_25sdp"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
                                             android:background="@drawable/m_telur" />
 
                                         <TextView
@@ -300,20 +300,20 @@
                                             android:fontFamily="@font/popsem"
                                             android:text="Telur"
                                             android:textColor="@color/black"
-                                            android:textSize="@dimen/_6sdp" />
+                                            android:textSize="@dimen/_9sdp" />
 
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_width="@dimen/_50sdp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="@dimen/_10sdp"
                                         android:orientation="vertical">
 
                                         <ImageButton
                                             android:id="@+id/btnLainnya"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="@dimen/_25sdp"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
                                             android:background="@drawable/m_other" />
 
                                         <TextView
@@ -324,7 +324,7 @@
                                             android:fontFamily="@font/popsem"
                                             android:text="Lainnya"
                                             android:textColor="@color/black"
-                                            android:textSize="@dimen/_6sdp" />
+                                            android:textSize="@dimen/_9sdp" />
 
                                     </LinearLayout>
 
@@ -367,15 +367,15 @@
                                     android:orientation="horizontal">
 
                                     <LinearLayout
-                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_width="@dimen/_50sdp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="@dimen/_10sdp"
                                         android:orientation="vertical">
 
                                         <ImageButton
                                             android:id="@+id/btnCall"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="@dimen/_25sdp"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
                                             android:background="@drawable/m_call" />
 
                                         <TextView
@@ -387,20 +387,20 @@
                                             android:text="Call Center"
                                             android:textAlignment="center"
                                             android:textColor="@color/black"
-                                            android:textSize="@dimen/_6sdp" />
+                                            android:textSize="@dimen/_9sdp" />
 
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_width="@dimen/_50sdp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="@dimen/_10sdp"
                                         android:orientation="vertical">
 
                                         <ImageButton
                                             android:id="@+id/btnLokasi"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="@dimen/_25sdp"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
                                             android:background="@drawable/m_loc" />
 
                                         <TextView
@@ -412,20 +412,20 @@
                                             android:gravity="center_horizontal"
                                             android:text="Lokasi"
                                             android:textColor="@color/black"
-                                            android:textSize="@dimen/_6sdp" />
+                                            android:textSize="@dimen/_9sdp" />
 
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_width="@dimen/_50sdp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="@dimen/_10sdp"
                                         android:orientation="vertical">
 
                                         <ImageButton
                                             android:id="@+id/btnChat"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="@dimen/_25sdp"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
                                             android:background="@drawable/m_chat" />
 
                                         <TextView
@@ -436,7 +436,7 @@
                                             android:fontFamily="@font/popmed"
                                             android:text="Pesan"
                                             android:textColor="@color/black"
-                                            android:textSize="@dimen/_6sdp" />
+                                            android:textSize="@dimen/_9sdp" />
 
                                     </LinearLayout>
 
@@ -561,7 +561,8 @@
             <RelativeLayout
                 android:id="@+id/bs_colapse"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_25sdp"
+                android:padding="@dimen/_10sdp"
+                android:layout_height="wrap_content"
                 android:background="@color/main"
                 android:onClick="checkout"
 
@@ -576,7 +577,7 @@
                     android:fontFamily="@font/popsem"
                     android:text="Total Pembelian :"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_10sdp" />
+                    android:textSize="@dimen/_11sdp" />
 
                 <TextView
                     android:id="@+id/totalHarga"
@@ -588,7 +589,7 @@
                     android:fontFamily="@font/popsem"
                     android:text="Rp. 0"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_10sdp" />
+                    android:textSize="@dimen/_11sdp" />
             </RelativeLayout>
 
             <nl.joery.animatedbottombar.AnimatedBottomBar

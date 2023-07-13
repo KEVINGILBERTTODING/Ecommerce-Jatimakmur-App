@@ -375,7 +375,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri number = Uri.parse("tel:082271313698");
+                Uri number = Uri.parse("tel:0895332561340");
                 Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
                 startActivity(callIntent);
 
@@ -393,7 +393,7 @@ public class MainActivity extends AppCompatActivity implements ProdukAdapter.Ite
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String no = "082271313698";
+                String no = "0895332561340";
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", no, null)));
 
             }

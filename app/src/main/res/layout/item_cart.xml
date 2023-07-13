@@ -11,14 +11,14 @@
 <androidx.cardview.widget.CardView
 
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_30sdp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/_5sdp"
     app:cardCornerRadius="@dimen/_5sdp"
     android:layout_marginVertical="2dp">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <RelativeLayout
             android:id="@+id/rl1"
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
                 android:maxWidth="250dp"
                 android:text="Nama Produk"
                 android:textColor="@color/font_ongkir"
-                android:textSize="@dimen/_8sdp"
+                android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
 
             <TextView
@@ -46,7 +46,7 @@
                 android:layout_marginLeft="@dimen/_8sdp"
                 android:fontFamily="@font/popmed"
                 android:text="Harga"
-                android:textSize="@dimen/_7sdp" />
+                android:textSize="@dimen/_11sdp" />
         </RelativeLayout>
 
         <TextView
